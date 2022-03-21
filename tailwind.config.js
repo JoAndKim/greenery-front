@@ -28,8 +28,8 @@ module.exports = {
             red: "#ff0000",
         },
         fontFamily: {
-            sans: ["Noto Sans KR"],
-            serif: ["sans-serifs"],
+            sans: ["Noto Sans KR", "sans-serif"],
+            serif: ["Noto Serif KR", "serif"],
         },
     },
     plugins: [],
