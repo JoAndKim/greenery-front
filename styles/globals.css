@@ -1,3 +1,102 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+:root {
+    --text: #000000;
+    --highlight-text: #ffffff;
+    --light-text: #121212;
+    --lighter-text: #767676;
+    --primary: #45ba66;
+    --primary-dark: #5b734e;
+    --primary-light: #69bf3b;
+    --bg: #ffffff;
+    --bg-linear: linear-gradient(107.56deg, #def9f6 0%, #f9ebde 100%);
+    --gray: #c4c4c4;
+    --gray-light: #f2f2f2;
+    --red: #ff0000;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+pre,
+a,
+abbr,
+address,
+big,
+em,
+img,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+form,
+label,
+table,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+menu,
+nav,
+output,
+section,
+summary {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    font-style: normal;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    font-family: "Noto Sans KR", sans-serif;
+    background-color: #fff;
+}
+
+a {
+    color: var(--text);
+    text-decoration: none;
+}
+
+dl,
+ul,
+ol,
+menu,
+li {
+    list-style: none;
+}

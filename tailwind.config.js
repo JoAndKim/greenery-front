@@ -23,8 +23,7 @@ module.exports = {
             "primary-dark": "#5B734E",
             "primary-light": "#69BF3B",
             bg: "#ffffff",
-            "bg-linerar":
-                "linear-gradient(107.56deg, #DEF9F6 0%, #F9EBDE 100%)",
+            "bg-linear": "linear-gradient(107.56deg, #DEF9F6 0%, #F9EBDE 100%)",
             red: "#ff0000",
         },
         fontFamily: {
