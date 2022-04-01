@@ -4,7 +4,7 @@ export const PostCardArticle = styled.article`
     display: flex;
     flex-direction: column;
 
-    & h3 {
+    h3 {
         margin: 16px 0 10px 10px;
         font-size: 16px;
         font-weight: bold;
@@ -13,7 +13,7 @@ export const PostCardArticle = styled.article`
         white-space: nowrap;
     }
 
-    & a {
+    a {
         text-decotration: none;
     }
 `;
@@ -24,7 +24,7 @@ export const ImgWrapper = styled.div`
     border-radius: 10px;
     overflow: hidden;
 
-    & img {
+    img {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -60,27 +60,39 @@ export const Profile = styled.div`
     display: flex;
     align-items: center;
 
-    & img {
+    img {
         width: 22px;
         height: 22px;
         margin-right: 6px;
         border-radius: 100px;
     }
 
-    & span {
+    span {
         margin-bottom: 2px;
         font-size: 14px;
     }
 `;
 
-export const Like = styled.div`
+export const PostInfoWrapper = styled.div`
+    display: flex;
+`;
+
+export const PostInfo = styled.div`
     align-self: flex-end;
     display: flex;
     align-items: center;
     font-size: 10px;
     color: #767676;
 
-    & span {
+    img {
+        width: ${(props) => props.width};
+    }
+
+    span {
         margin-left: 3px;
+    }
+
+    & + & {
+        margin-left: 8px;
     }
 `;

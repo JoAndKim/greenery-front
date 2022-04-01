@@ -49,33 +49,36 @@ export default function Home() {
             ))} */}
                         <PostCard
                             id={3}
-                            imgUrl="img/plant.png"
+                            mainImageUrl="img/plant.png"
                             title="함께 한지 2년된 호호노롤종"
-                            author={{
-                                name: "hey",
-                                profileImg: "img/plant.png",
+                            user={{
+                                username: "hey",
+                                profileImageUrl: "img/plant.png",
                             }}
                             likes={4876}
+                            hits={3095}
                         />
                         <PostCard
                             id={3}
-                            imgUrl="img/plant.png"
+                            mainImageUrl="img/plant.png"
                             title="함께 한지 2년된 호호노롤종"
-                            author={{
-                                name: "hey",
-                                profileImg: "img/plant.png",
+                            user={{
+                                username: "hey",
+                                profileImageUrl: "img/plant.png",
                             }}
                             likes={4876}
+                            hits={3095}
                         />
                         <PostCard
                             id={3}
-                            imgUrl="img/plant.png"
+                            mainImageUrl="img/plant.png"
                             title="함께 한지 2년된 호호노롤종"
-                            author={{
-                                name: "hey",
-                                profileImg: "img/plant.png",
+                            user={{
+                                username: "hey",
+                                profileImageUrl: "img/plant.png",
                             }}
                             likes={4876}
+                            hits={3095}
                         />
                     </PostCardBox>
                 </PostContentsWrapper>
