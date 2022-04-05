@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
     PostTextarea,
     DisplayImg,
@@ -11,16 +12,24 @@ import {
 
 import { Header } from "../../components/index";
 
-// handle input change
-const handleInputChange = (e, index) => {
-    const { name, value } = e.target;
-    const list = [...inputList];
+const handleTitleChange = (e) => {
+    setTitle(e.target.value);
+};
 
-    if (name === "fileImage") {
-        list[index][name] = URL.createObjectURL(e.target.files[0]);
-        list[index].imgUrl = "";
-    } else list[index][name] = value;
-    setInputList(list);
+// handle input change
+const handleInputChange = (e) => {
+    console.log(e.target.files[0]);
+    let selectFile = e.target.files[0];
+    const file = URL.createObjectURL(selectFile);
+    console.log(file);
+    // const { name, value } = e.target;
+    // const list = [...inputList];
+
+    // if (name === "fileImage") {
+    //     list[index][name] = URL.createObjectURL(e.target.files[0]);
+    //     list[index].imgUrl = "";
+    // } else list[index][name] = value;
+    // setInputList(list);
 };
 
 // handle click event of the Remove button
@@ -31,28 +40,43 @@ const handleRemoveClick = (index) => {
 };
 
 // handle click event of the Add button
-const handleAddClick = () => {
-    setInputList([...inputList, { content: "", imgUrl: "" }]);
+// const handleAddClick = () => {
+//     setInputList([...inputList, { content: "", imgUrl: "" }]);
+// };
+
+const handleContentAddButton = () => {
+    setInputList([...inputList, { postImageUrl: "", content: "" }]);
 };
 
 export default function Post() {
+    const [title, setTitle] = useState("");
+    const [inputList, setInputList] = useState();
+
     return (
         <PostWrapper>
             <Header></Header>
             <PostFormWrapper>
-                <PostTitle placeholder="제목을 입력해주세요." />
+                <PostTitle
+                    placeholder="제목을 입력해주세요."
+                    onChange={handleTitleChange}
+                />
 
-                <form id="PostFormSubmit">
+                <form>
                     <ContentSection>
                         <label>
                             <input
+                                // onClick={() => {
+                                //     alert("h3llo");
+                                // }}
+                                type="file"
                                 name="fileImage"
-                                accept=".gif, .jpeg, .heic, .png"
-                                style={{ display: "none" }}
+                                accept="image/*"
+                                // style={{ display: "none" }}
+                                onChange={handleInputChange}
                             />
                             <DisplayImg
                                 src="/img/upload.png"
-                                alt="upload.png"
+                                alt="업로드 이미지"
                             />
 
                             <RemoveBtn onClick={() => handleRemoveClick(i)}>
@@ -69,7 +93,7 @@ export default function Post() {
                         />
                     </ContentSection>
                 </form>
-                <CotentAddButton onClick={handleAddClick}>
+                <CotentAddButton onClick={handleContentAddButton}>
                     추가하기
                 </CotentAddButton>
                 {/* <div>{JSON.stringify(inputList)}</div> */}
