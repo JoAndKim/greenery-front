@@ -5,4 +5,7 @@ import ImgCard from "./ImgCard/ImgCard";
 import Header from "./Header/Header";
 import Footer from "./Footer/Footer";
 
-export { TodaysPlant, ImgCard, PostCard, Header, Footer };
+import PostArticle from "./PostArticle/PostArticle";
+import SideBar from "./SideBar/SideBar";
+
+export { TodaysPlant, ImgCard, PostCard, Header, Footer, PostArticle, SideBar };
