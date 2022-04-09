@@ -39,9 +39,10 @@ export default function PostArticle({
     likeStatus,
     postContents,
     regDate,
+    profileImgUrl,
+    username,
+    userId,
 }) {
-    const { id, username, profileImgUrl } = user;
-
     return (
         <ArticleWrapper>
             <ArticleTitle>{title}</ArticleTitle>
