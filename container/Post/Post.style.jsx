@@ -8,6 +8,7 @@ export const PostWrapper = styled.article`
 `;
 
 export const PostFormWrapper = styled.div`
+    width: 862px;
     margin-top: 120px;
     display: flex;
     flex-direction: column;
@@ -71,7 +72,6 @@ export const DisplayImg = styled.img`
     width: 420px;
     height: 350px;
     object-fit: cover;
-    cursor: pointer;
 
     border: 1px solid #dadce0;
     border-radius: 10px;
@@ -132,22 +132,24 @@ export const RemoveBtn = styled.button`
     }
 `;
 
-export const CotentAddButton = styled.button`
+export const CotentAddBar = styled.div`
     width: 862px;
     height: 64px;
 
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 18px;
-
-    line-height: 21px;
+    line-height: 64px;
     align-items: center;
     text-align: center;
 
     border-radius: 5px;
     border: 1px solid #e5e5e5;
     background: #f5f5f5;
+
+    span {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 18px;
+    }
 
     color: #767676;
     @media (max-width: 1140px) {

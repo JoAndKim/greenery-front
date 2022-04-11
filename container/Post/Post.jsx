@@ -2,7 +2,7 @@ import { useState } from "react";
 import {
     PostTextarea,
     DisplayImg,
-    CotentAddButton,
+    CotentAddBar,
     PostTitle,
     RemoveBtn,
     ContentSection,
@@ -23,6 +23,7 @@ import { Header } from "../../components/index";
 
 export default function Post() {
     const [title, setTitle] = useState("");
+    const [isinitalImgExist, setIsInitalImgExist] = useState(false);
     const [inputList, setInputList] = useState([
         {
             postImageUrl: "/img/upload.png",
@@ -40,21 +41,29 @@ export default function Post() {
     //     setInputList(list);
     // };
 
-    const handleInputChange = (e) => {
+    const handleInputFileChange = (e) => {
+        let uploadedFile = e.target.files[0];
+        let list = [...inputList];
+        let index = e.target.id;
+    };
+
+    const initialImgUpload = (e) => {
         let uploadedFile = e.target.files[0];
         let list = [...inputList];
         let index = e.target.id;
         list[index].postImageUrl = URL.createObjectURL(uploadedFile);
         setInputList(list);
 
-        // const { name, value } = e.target;
-        // const list = [...inputList];
+        setIsInitalImgExist(true);
+    };
 
-        // if (name === "fileImage") {
-        //     list[index][name] = URL.createObjectURL(e.target.files[0]);
-        //     list[index].imgUrl = "";
-        // } else list[index][name] = value;
-        // setInputList(list);
+    const handleContentAddButton = (e) => {
+        e.preventDefault();
+        let uploadedFileURL = URL.createObjectURL(e.target.files[0]);
+        setInputList([
+            ...inputList,
+            { postImageUrl: uploadedFileURL, content: "" },
+        ]);
     };
 
     const handleTextAreaBlur = (e) => {
@@ -64,16 +73,9 @@ export default function Post() {
         setInputList(list);
     };
 
-    const handleContentAddButton = () => {
-        setInputList([
-            ...inputList,
-            { postImageUrl: "/img/upload.png", content: "" },
-        ]);
-    };
-
     return (
         <PostWrapper>
-            <Header></Header>
+            <Header />
             <PostFormWrapper>
                 <PostTitle
                     placeholder="제목을 입력해주세요."
@@ -83,29 +85,39 @@ export default function Post() {
                 <form>
                     {inputList.map((list, index) => {
                         return (
-                            <ContentSection>
+                            <ContentSection key={index}>
                                 <label>
-                                    <input
-                                        id={index}
-                                        type="file"
-                                        name="fileImage"
-                                        accept="image/*"
-                                        style={{ display: "none" }}
-                                        onChange={handleInputChange}
-                                    />
+                                    {!isinitalImgExist && (
+                                        <input
+                                            id={index}
+                                            type="file"
+                                            name="fileImage"
+                                            accept="image/*"
+                                            style={{ display: "none" }}
+                                            onChange={initialImgUpload}
+                                        />
+                                    )}
+
                                     <DisplayImg
                                         src={list.postImageUrl}
                                         alt="업로드 이미지"
                                     />
-
+                                    {/* 
                                     <RemoveBtn
-                                        onClick={() => handleRemoveClick(i)}
+                                        id={index}
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            let list = [...inputList];
+                                            let index = e.currentTarget.id;
+                                            list[index].postImageUrl = "";
+                                            setInputList(list);
+                                        }}
                                     >
                                         <img
                                             src="/icon/postTrash.svg"
                                             alt="사진 이미지 버리기"
                                         />
-                                    </RemoveBtn>
+                                    </RemoveBtn> */}
                                 </label>
 
                                 <PostTextarea
@@ -118,10 +130,24 @@ export default function Post() {
                         );
                     })}
                 </form>
-                <CotentAddButton onClick={handleContentAddButton}>
-                    추가하기
-                </CotentAddButton>
-                {/* <div>{JSON.stringify(inputList)}</div> */}
+
+                <form>
+                    <label>
+                        {isinitalImgExist && (
+                            <CotentAddBar
+                                initalImgExist
+                                onChange={handleContentAddButton}
+                            >
+                                <span>추가하기</span>
+                                <input
+                                    type="file"
+                                    id={inputList.length}
+                                    style={{ display: "none" }}
+                                />
+                            </CotentAddBar>
+                        )}
+                    </label>
+                </form>
             </PostFormWrapper>
         </PostWrapper>
     );
