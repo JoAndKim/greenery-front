@@ -112,7 +112,7 @@ export const PostTextarea = styled.textarea`
     }
 `;
 
-export const RemoveBtn = styled.button`
+export const RemoveBtn = styled.div`
     position: absolute;
     left: 10px;
     bottom: 10px;

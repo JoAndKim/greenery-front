@@ -26,7 +26,7 @@ export default function Post() {
     const [isinitalImgExist, setIsInitalImgExist] = useState(false);
     const [inputList, setInputList] = useState([
         {
-            postImageUrl: "/img/upload.png",
+            postImageUrl: "",
             content: "",
         },
     ]);
@@ -35,11 +35,21 @@ export default function Post() {
         setTitle(e.target.value);
     };
 
-    // const handleRemoveClick = (index) => {
-    //     const list = [...inputList];
-    //     list.splice(index, 1);
-    //     setInputList(list);
-    // };
+    const handleRemoveClick = (e) => {
+        let list = [...inputList];
+        let index = e.currentTarget.id;
+        if (index == 0 && inputList.length === 1) {
+            list[0].postImageUrl = "";
+            list[0].content = "";
+            setInputList(list);
+            setIsInitalImgExist(false);
+            e.preventDefault();
+            return;
+        }
+        list.splice(index, 1);
+        setInputList(list);
+        console.log("hey");
+    };
 
     const handleInputFileChange = (e) => {
         let uploadedFile = e.target.files[0];
@@ -53,7 +63,6 @@ export default function Post() {
         let index = e.target.id;
         list[index].postImageUrl = URL.createObjectURL(uploadedFile);
         setInputList(list);
-
         setIsInitalImgExist(true);
     };
 
@@ -99,25 +108,24 @@ export default function Post() {
                                     )}
 
                                     <DisplayImg
-                                        src={list.postImageUrl}
+                                        src={
+                                            list.postImageUrl ||
+                                            "/img/upload.png"
+                                        }
                                         alt="업로드 이미지"
                                     />
-                                    {/* 
-                                    <RemoveBtn
-                                        id={index}
-                                        onClick={(e) => {
-                                            e.preventDefault();
-                                            let list = [...inputList];
-                                            let index = e.currentTarget.id;
-                                            list[index].postImageUrl = "";
-                                            setInputList(list);
-                                        }}
-                                    >
-                                        <img
-                                            src="/icon/postTrash.svg"
-                                            alt="사진 이미지 버리기"
-                                        />
-                                    </RemoveBtn> */}
+
+                                    {isinitalImgExist && (
+                                        <RemoveBtn
+                                            id={index}
+                                            onClick={handleRemoveClick}
+                                        >
+                                            <img
+                                                src="/icon/postTrash.svg"
+                                                alt="사진 이미지 버리기"
+                                            />
+                                        </RemoveBtn>
+                                    )}
                                 </label>
 
                                 <PostTextarea
@@ -141,7 +149,6 @@ export default function Post() {
                                 <span>추가하기</span>
                                 <input
                                     type="file"
-                                    id={inputList.length}
                                     style={{ display: "none" }}
                                 />
                             </CotentAddBar>
