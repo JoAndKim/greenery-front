@@ -15,7 +15,7 @@ import { Header } from "../../components/index";
 // # 제출된 파일이 화면에 보이도록 하기
 // - [x] post 페이지로 접속했을 때 초기화면은 기본 ContentSection
 // - [x] 파일을 등록하면 inputList에 반영
-// - [ ] 포스트 삭제 버튼
+// - [x] 포스트 삭제 버튼
 // - [ ] 다시 랜더링으로 그려주기
 
 // - # formData로 전송할 파일 만들기
@@ -51,13 +51,7 @@ export default function Post() {
         console.log("hey");
     };
 
-    const handleInputFileChange = (e) => {
-        let uploadedFile = e.target.files[0];
-        let list = [...inputList];
-        let index = e.target.id;
-    };
-
-    const initialImgUpload = (e) => {
+    const handleInputChange = (e) => {
         let uploadedFile = e.target.files[0];
         let list = [...inputList];
         let index = e.target.id;
@@ -103,7 +97,7 @@ export default function Post() {
                                             name="fileImage"
                                             accept="image/*"
                                             style={{ display: "none" }}
-                                            onChange={initialImgUpload}
+                                            onChange={handleInputChange}
                                         />
                                     )}
 

@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 export const PostWrapper = styled.article`
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
 `;
 
 export const PostFormWrapper = styled.div`
@@ -13,7 +13,6 @@ export const PostFormWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
 
     & form {
         display: block;
@@ -22,6 +21,7 @@ export const PostFormWrapper = styled.div`
     @media (max-width: 1140px) {
         width: 100%;
         margin-top: 80px;
+        padding: 20px;~
     }
 `;
 
@@ -118,6 +118,7 @@ export const RemoveBtn = styled.div`
     bottom: 10px;
     background-color: transparent;
     border: none;
+    cursor: pointer;
 
     img {
         width: 34px;
@@ -135,6 +136,7 @@ export const RemoveBtn = styled.div`
 export const CotentAddBar = styled.div`
     width: 862px;
     height: 64px;
+    cursor: pointer;
 
     line-height: 64px;
     align-items: center;
