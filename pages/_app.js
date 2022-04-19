@@ -5,6 +5,7 @@ function MyApp({ Component, pageProps }) {
     return (
         <>
             <Head>
+                <link rel="shortcut icon" href="/favicon.svg" />
                 <title>초록친구</title>
                 <meta
                     property="og:title"
