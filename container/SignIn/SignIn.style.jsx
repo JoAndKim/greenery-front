@@ -31,9 +31,14 @@ export const Input = styled.input`
     & + & {
         margin-top: 15px;
     }
+
+    :focus {
+        outline: 2px solid var(--primary);
+        border: none;
+    }
 `;
 
-export const SignInButton = styled.button`
+export const SubmitButton = styled.button`
     width: 100%;
     height: 48px;
     border: none;
@@ -43,4 +48,9 @@ export const SignInButton = styled.button`
     font-weight: 700;
     color: var(--highlight-text);
     margin-top: 25px;
+
+    :hover {
+        cursor: pointer;
+        opacity: 0.8;
+    }
 `;
