@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+import axios from "axios";
 import {
     TodaysPlant,
     ImgCard,
@@ -14,6 +16,13 @@ import {
 } from "./Home.style";
 
 export default function Home() {
+    const [famousPosts, setFamousPosts] = useState([]);
+    useEffect(async () => {
+        const response = await axios.get("/main");
+        const { manyHitsPlants } = await response.data;
+        setFamousPosts(manyHitsPlants);
+    }, []);
+
     return (
         <>
             {/* <HeadInfo title="초록친구 헤헤" /> */}
@@ -36,50 +45,18 @@ export default function Home() {
                         </StyledLink>
                     </Title>
                     <PostCardBox>
-                        {/* {cardData &&
-            cardData.posts.map(({ id, imgUrl, title, author, likes }) => (
-              <PostCard
-                key={id}
-                id={id}
-                imgUrl={imgUrl}
-                title={title}
-                author={author}
-                likes={likes}
-              />
-            ))} */}
-                        <PostCard
-                            id={3}
-                            mainImageUrl="img/plant.png"
-                            title="함께 한지 2년된 호호노롤종"
-                            user={{
-                                username: "hey",
-                                profileImageUrl: "img/plant.png",
-                            }}
-                            likes={4876}
-                            hits={3095}
-                        />
-                        <PostCard
-                            id={3}
-                            mainImageUrl="img/plant.png"
-                            title="함께 한지 2년된 호호노롤종"
-                            user={{
-                                username: "hey",
-                                profileImageUrl: "img/plant.png",
-                            }}
-                            likes={4876}
-                            hits={3095}
-                        />
-                        <PostCard
-                            id={3}
-                            mainImageUrl="img/plant.png"
-                            title="함께 한지 2년된 호호노롤종"
-                            user={{
-                                username: "hey",
-                                profileImageUrl: "img/plant.png",
-                            }}
-                            likes={4876}
-                            hits={3095}
-                        />
+                        {famousPosts &&
+                            famousPosts.map((card) => (
+                                <PostCard
+                                    key={card.id}
+                                    id={card.id}
+                                    mainImageUrl={card.mainImageUrl}
+                                    title={card.title}
+                                    user={card.user}
+                                    likes={card.likes}
+                                    hits={card.hits}
+                                />
+                            ))}
                     </PostCardBox>
                 </PostContentsWrapper>
                 <ImgCard />

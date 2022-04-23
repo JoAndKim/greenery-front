@@ -13,11 +13,9 @@ import { useState, useEffect } from "react";
 export default function Community() {
     const [posts, setPosts] = useState();
     useEffect(async () => {
-        const response = await axios.get(
-            "https://7b39d87a-0dfa-4f76-9b96-961b2d4e808e.mock.pstmn.io/api/posts"
-        );
+        const response = await axios.get("/posts");
         setPosts(response.data.posts);
-    });
+    }, []);
 
     return (
         <>
@@ -46,6 +44,7 @@ export default function Community() {
                                     return (
                                         <PostCard
                                             id={id}
+                                            key={id}
                                             mainImageUrl={mainImageUrl}
                                             title={title}
                                             user={user}
