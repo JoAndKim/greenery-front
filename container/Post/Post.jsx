@@ -48,7 +48,6 @@ export default function Post() {
         }
         list.splice(index, 1);
         setInputList(list);
-        console.log("hey");
     };
 
     const handleInputChange = (e) => {
@@ -78,7 +77,7 @@ export default function Post() {
 
     return (
         <PostWrapper>
-            <Header />
+            <Header id="post" />
             <PostFormWrapper>
                 <PostTitle
                     placeholder="제목을 입력해주세요."

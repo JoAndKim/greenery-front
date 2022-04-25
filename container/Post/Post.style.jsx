@@ -21,7 +21,7 @@ export const PostFormWrapper = styled.div`
     @media (max-width: 1140px) {
         width: 100%;
         margin-top: 80px;
-        padding: 20px;~
+        padding: 20px;
     }
 `;
 
@@ -43,7 +43,7 @@ export const PostTitle = styled.input`
 
     &:focus {
         outline: none;
-        border: 1px solid #45ba66;
+        border: 1px solid var(--primary);
     }
 `;
 
@@ -54,7 +54,7 @@ export const ContentSection = styled.div`
     margin-bottom: 32px;
     width: 100%;
 
-    & label {
+    label {
         position: relative;
     }
 
@@ -73,7 +73,6 @@ export const DisplayImg = styled.img`
     height: 350px;
     object-fit: cover;
 
-    border: 1px solid #dadce0;
     border-radius: 10px;
 
     @media (max-width: 1140px) {
@@ -145,6 +144,7 @@ export const CotentAddBar = styled.div`
     border-radius: 5px;
     border: 1px solid #e5e5e5;
     background: #f5f5f5;
+    color: var(--lighter-text);
 
     span {
         font-family: Roboto;
@@ -153,7 +153,6 @@ export const CotentAddBar = styled.div`
         font-size: 18px;
     }
 
-    color: #767676;
     @media (max-width: 1140px) {
         width: 100%;
     }
