@@ -41,15 +41,17 @@ export const Input = styled.input`
     height: 48px;
     font-size: 17px;
     color: var(--lighter-text);
-    padding: 10px;
+    text-indent: 10px;
+    border-radius: 3.5px;
+    border: 1px solid var(--gray);
 
     & + & {
         margin-top: 15px;
     }
 
     :focus {
-        outline: 2px solid var(--primary);
-        border: none;
+        outline: none;
+        box-shadow: 0 0 1px 1px var(--primary);
     }
 `;
 
@@ -76,9 +78,9 @@ export const SubmitButton = styled.button`
     color: var(--highlight-text);
     margin-top: 25px;
 
-    :hover {
+    &:hover {
         cursor: pointer;
-        opacity: 0.8;
+        opacity: 0.9;
     }
 `;
 
@@ -90,7 +92,7 @@ export const MemberCheck = styled.p`
     margin-top: 14px;
     text-align: center;
 
-    :hover {
+    &:hover {
         text-decoration: underline;
     }
 `;
