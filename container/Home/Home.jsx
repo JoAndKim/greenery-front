@@ -18,7 +18,7 @@ import {
 export default function Home() {
     const [famousPosts, setFamousPosts] = useState([]);
     useEffect(async () => {
-        const response = await axios.get("/main");
+        const response = await axios.get("/api/main");
         const { manyHitsPlants } = await response.data;
         setFamousPosts(manyHitsPlants);
     }, []);

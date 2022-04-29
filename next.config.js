@@ -5,12 +5,16 @@ module.exports = {
     reactStrictMode: true,
     async rewrites() {
         return [
-            { source: "/main", destination: `${API_URL}/main` },
             {
-                source: "/login/direct",
-                destination: `${API_URL}/login/direct`,
+                source: "/api/:direction*",
+                destination: `${API_URL}/api/:direction*`,
             },
-            { source: "/posts", destination: `${API_URL}/posts` },
         ];
     },
 };
+
+// {
+//     source: "/login/direct",
+//     destination: `${API_URL}/login/direct`,
+// },
+// { source: "/posts", destination: `${API_URL}/posts` },

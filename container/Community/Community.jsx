@@ -13,7 +13,7 @@ import { useState, useEffect } from "react";
 export default function Community() {
     const [posts, setPosts] = useState();
     useEffect(async () => {
-        const response = await axios.get("/posts");
+        const response = await axios.get("/api/posts");
         setPosts(response.data.posts);
     }, []);
 
