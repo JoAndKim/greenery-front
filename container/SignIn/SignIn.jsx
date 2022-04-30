@@ -1,17 +1,20 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import axios from "axios";
 import {
     Main,
     ContentsWrapper,
     Logo,
     Input,
-    SubmitButton,
+    SubmitButton
 } from "./SignIn.style";
 import { useState } from "react";
 
 export default function SignIn() {
     const [id, setId] = useState("");
     const [password, setPassword] = useState("");
+
+    const router = useRouter();
 
     const handleIdChange = (e) => {
         setId(e.target.value);
@@ -22,15 +25,18 @@ export default function SignIn() {
     const handleSubmit = (e) => {
         e.preventDefault();
         axios
-            .post("/login/direct", {
+            .post("/api/login/direct", {
                 username: id,
-                password: password,
+                password: password
             })
             .then(function (response) {
-                console.log(response);
+                localStorage.setItem("accessToken", response.data);
+                router.push("/");
             })
             .catch(function (error) {
-                console.log(error);
+                alert(
+                    "로그인을 완료할 수 없습니다. 아이디와 비밀번호를 다시 한번 확인해 주세요."
+                );
             });
     };
 
