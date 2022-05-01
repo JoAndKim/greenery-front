@@ -5,20 +5,8 @@ import {
     ContentBox,
     Profile,
     PostInfoWrapper,
-    PostInfo,
+    PostInfo
 } from "./PostCard.style";
-
-// {
-//     "id": 2,
-//     "user": {
-//       "username": "seoyeong",
-//       "profileImageUrl": "https://avatars.githubusercontent.com/u/74144442?v=4"
-//     },
-//     "title": "제가 좋아하는 식물이에요!",
-//     "mainImageUrl": "https://contents.lotteon.com/itemimage/_v000249/LO/15/32/55/97/16/_1/53/25/59/71/7/LO1532559716_1532559717_1.jpg/dims/optimize/dims/resizemc/400x400",
-//     "likes": 21,
-//     "hits": 3095
-//   }
 
 export default function PostCard({
     id,
@@ -26,9 +14,9 @@ export default function PostCard({
     title,
     user,
     likes,
-    hits,
+    hits
 }) {
-    const { username, profileImageUrl } = user;
+    const { nickname, profileImageUrl } = user;
 
     return (
         <PostCardArticle>
@@ -41,7 +29,7 @@ export default function PostCard({
                     <ContentBox>
                         <Profile>
                             <img src={profileImageUrl} alt="프로필 이미지" />
-                            <span>{username}</span>
+                            <span>{nickname}</span>
                         </Profile>
                         <PostInfoWrapper>
                             <PostInfo>
