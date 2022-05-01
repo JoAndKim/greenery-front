@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const PostCardArticle = styled.article`
     display: flex;
     flex-direction: column;
+    width: 360px;
 
     h3 {
         margin: 16px 0 10px 10px;
@@ -82,7 +83,7 @@ export const PostInfo = styled.div`
     display: flex;
     align-items: center;
     font-size: 10px;
-    color: #767676;
+    color: var(--lighter-text);
 
     img {
         width: ${(props) => props.width};
