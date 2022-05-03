@@ -8,13 +8,18 @@ import {
     Input,
     SubmitButton
 } from "./SignIn.style";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 export default function SignIn() {
     const [id, setId] = useState("");
     const [password, setPassword] = useState("");
 
     const router = useRouter();
+    const inputRef = useRef();
+
+    useEffect(() => {
+        inputRef.current.focus();
+    }, []);
 
     const handleIdChange = (e) => {
         setId(e.target.value);
@@ -54,6 +59,7 @@ export default function SignIn() {
                         name="id"
                         placeholder="아이디"
                         onChange={handleIdChange}
+                        ref={inputRef}
                     />
                     <Input
                         type="password"
