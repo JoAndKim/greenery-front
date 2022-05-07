@@ -33,38 +33,6 @@ export default function SignUp() {
     const router = useRouter();
     const fileInput = useRef();
 
-    const imageApiCall = () => {
-        const formData = new FormData();
-        const file = fileInput.current.files[0];
-        formData.append("imageFile", file);
-        axios
-            .post("/api/image", formData, {
-                headers: {
-                    "Content-Type": "multipart/form-data"
-                }
-            })
-            .then((response) => {
-                const { imageUrl } = response.data;
-                setValues({ ...values, profileImageUrl: imageUrl });
-                return "completed";
-            })
-            .then((message) => {
-                console.log(message);
-                console.log(values);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    };
-
-    // (async function(x) {
-    //     var p_a = resolveAfter2Seconds(20);
-    //     var p_b = resolveAfter2Seconds(30);
-    //     return x + await p_a + await p_b;
-    //   })(10).then(v => {
-    //     console.log(v);  // 2초 뒤에 60 출력
-    //   });
-
     const handleSubmit = (e) => {
         e.preventDefault();
         const { id, password, passwordConfirm, nickname } = errorMessage;
