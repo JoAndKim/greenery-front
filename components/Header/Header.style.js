@@ -152,3 +152,24 @@ export const Item = styled.li`
         color: var(--primary);
     }
 `;
+
+export const UserNavigationWrap = styled.div``;
+
+export const DropDownButton = styled.button`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 80px;
+    left: 1448px;
+    top: 30px;
+    border-radius: 90px;
+    box-shadow: 0px 4px 4px 0px #00000040;
+    border: none;
+    background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%),
+        #eaeaea;
+
+    img + img {
+        margin-left: 11px;
+    }
+`;

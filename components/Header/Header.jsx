@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
     HeaderTag,
     LayoutNavigationMenu,
@@ -12,10 +13,18 @@ import {
     HeaderLogo,
     FormLogo,
     Item,
+    DropDownButton
 } from "./Header.style";
 import Link from "next/link";
+import { HeaderDropDown } from "../index";
 
 export default function Header(props) {
+    const [isDropDown, setIsDropDown] = useState(false);
+
+    const handleButtonClick = () => {
+        setIsDropDown(!isDropDown);
+    };
+
     return (
         <HeaderTag>
             <NavigationBarContainer>
@@ -23,7 +32,10 @@ export default function Header(props) {
                     <LogoWrap>
                         <Link href="/">
                             <a>
-                                {/* <FormLogo src="/img/logo.svg" alt="home_logo" /> */}
+                                {/* <FormLogo
+                                    src="/icon/logo.svg"
+                                    alt="home_logo"
+                                /> */}
 
                                 <HeaderLogo alt="home_logo" />
                             </a>
@@ -50,29 +62,11 @@ export default function Header(props) {
                     </MenuItems>
                 </LayoutNavigationMenu>
                 <LayoutNavigationRight>
-                    {/* <UserNavigationWrap onBlur={(e) => blurHandler(e)}>
-                        {props.id === "PostPage" ? (
-                            <PostButton form="PostFormSubmit">
-                                올리기
-                            </PostButton>
-                        ) : (
-                            <UserNavButton onClick={focusHandler}>
-                                <HamburgIconWrap>
-                                    <img
-                                        src="/icon/hamburger.svg"
-                                        alt="hamburger"
-                                    />
-                                </HamburgIconWrap>
-                                <UserIconWrap>
-                                    <img
-                                        src={"/icon/user.svg"}
-                                        alt="usericon"
-                                    />
-                                </UserIconWrap>
-                            </UserNavButton>
-                        )}
-                        {isDropDown && <HeaderDropDown />}
-                    </UserNavigationWrap> */}
+                    <DropDownButton onClick={handleButtonClick}>
+                        <img src="/icon/hamburger.svg"></img>
+                        <img src="/icon/user.svg"></img>
+                    </DropDownButton>
+                    {isDropDown && <HeaderDropDown></HeaderDropDown>}
                 </LayoutNavigationRight>
             </NavigationBarContainer>
         </HeaderTag>
