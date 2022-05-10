@@ -21,18 +21,20 @@ export const Logo = styled.img`
 `;
 
 export const Label = styled.label`
+    height: 116px;
     display: flex;
     flex-direction: column;
     font-size: 14px;
-
-    & + & {
-        margin-top: 40px;
-    }
 
     input {
         margin-top: 8px;
         width: 100%;
         height: 48px;
+    }
+
+    span {
+        margin-top: 3px;
+        color: var(--red);
     }
 `;
 
@@ -49,10 +51,19 @@ export const Input = styled.input`
         margin-top: 15px;
     }
 
-    :focus {
+    &:focus {
         outline: none;
         box-shadow: 0 0 1px 1px var(--primary);
     }
+
+    // &:invalid {
+    //     outline: none;
+    //     box-shadow: 0 0 1px 1px var(--red);
+    // }
+`;
+
+export const FileInputLabel = styled(Label)`
+    height: 248px;
 `;
 
 export const FileInput = styled.input`
@@ -60,7 +71,6 @@ export const FileInput = styled.input`
 `;
 
 export const ProfileImg = styled.img`
-    content: url("/img/signup_profile.png");
     width: 200px;
     height: 175px;
     margin-top: 15px;
@@ -76,7 +86,6 @@ export const SubmitButton = styled.button`
     font-size: 18px;
     font-weight: 700;
     color: var(--highlight-text);
-    margin-top: 25px;
 
     &:hover {
         cursor: pointer;
