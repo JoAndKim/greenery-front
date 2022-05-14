@@ -7,10 +7,11 @@ import {
     RemoveBtn,
     ContentSection,
     PostFormWrapper,
-    PostWrapper,
+    PostWrapper
 } from "./Post.style";
 
 import { Header } from "../../components/index";
+import axios from "axios";
 
 // # 제출된 파일이 화면에 보이도록 하기
 // - [x] post 페이지로 접속했을 때 초기화면은 기본 ContentSection
@@ -27,9 +28,21 @@ export default function Post() {
     const [inputList, setInputList] = useState([
         {
             postImageUrl: "",
-            content: "",
-        },
+            content: ""
+        }
     ]);
+
+    // const postFormData = (inputFile) => {
+    //     const formData = new FormData();
+    //     formData.append("imageFile", inputFile);
+    //     return axios
+    //         .post("/api/image", formData, {
+    //             headers: {
+    //                 "Content-Type": "multipart/form-data"
+    //             }
+    //         })
+    //         .then((response) => response.data);
+    // };
 
     const handleTitleChange = (e) => {
         setTitle(e.target.value);
@@ -51,21 +64,53 @@ export default function Post() {
     };
 
     const handleInputChange = (e) => {
-        let uploadedFile = e.target.files[0];
-        let list = [...inputList];
-        let index = e.target.id;
-        list[index].postImageUrl = URL.createObjectURL(uploadedFile);
-        setInputList(list);
-        setIsInitalImgExist(true);
+        const formData = new FormData();
+        const file = e.target.files[0];
+        formData.append("imageFile", file);
+        console.log(e.target);
+        axios
+            .post("/api/image", formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data"
+                }
+            })
+            .then((response) => {
+                const { imageUrl } = response.data;
+                let list = [...inputList];
+                let index = e.target.id;
+                list[index].postImageUrl = imageUrl;
+                setInputList(list);
+                if (index == 0 && inputList.length === 1) {
+                    setIsInitalImgExist(true);
+                }
+            })
+            .catch((error) => console.log(error));
     };
 
     const handleContentAddButton = (e) => {
-        e.preventDefault();
-        let uploadedFileURL = URL.createObjectURL(e.target.files[0]);
-        setInputList([
-            ...inputList,
-            { postImageUrl: uploadedFileURL, content: "" },
-        ]);
+        const formData = new FormData();
+        const file = e.target.files[0];
+        formData.append("imageFile", file);
+        axios
+            .post("/api/image", formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data"
+                }
+            })
+            .then((response) => {
+                const { imageUrl } = response.data;
+                let list = [...inputList];
+                list.push({
+                    postImageUrl: imageUrl,
+                    content: ""
+                });
+                setInputList(list);
+
+                const formData = new FormData();
+                const file = e.target.files[0];
+                formData.append("imageFile", file);
+            })
+            .catch((error) => console.log(error));
     };
 
     const handleTextAreaBlur = (e) => {
@@ -135,14 +180,14 @@ export default function Post() {
                 <form>
                     <label>
                         {isinitalImgExist && (
-                            <CotentAddBar
-                                initalImgExist
-                                onChange={handleContentAddButton}
-                            >
+                            <CotentAddBar initalImgExist>
                                 <span>추가하기</span>
                                 <input
                                     type="file"
+                                    name="fileImage"
+                                    accept="image/*"
                                     style={{ display: "none" }}
+                                    onChange={handleContentAddButton}
                                 />
                             </CotentAddBar>
                         )}
