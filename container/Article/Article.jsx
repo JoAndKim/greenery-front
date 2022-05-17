@@ -13,15 +13,12 @@ import { useState, useEffect } from "react";
 export default function Article() {
     const [postData, setPostData] = useState({});
     const router = useRouter();
-    const postId = router.query.id;
 
     useEffect(async () => {
         if (!router.isReady) return;
         const postId = await router.query.id;
-        const accessToken = await localStorage.getItem("accessToken");
         const response = await axios.get(`/api/posts/${postId}`);
         const { data } = response;
-        console.log(data);
         setPostData(data);
     }, [router.isReady]);
 
