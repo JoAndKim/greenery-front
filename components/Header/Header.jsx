@@ -62,10 +62,14 @@ export default function Header(props) {
                     </MenuItems>
                 </LayoutNavigationMenu>
                 <LayoutNavigationRight>
-                    <DropDownButton onClick={handleButtonClick}>
-                        <img src="/icon/hamburger.svg"></img>
-                        <img src="/icon/user.svg"></img>
-                    </DropDownButton>
+                    {props.id === "post" ? (
+                        <PostButton>올리기</PostButton>
+                    ) : (
+                        <DropDownButton onClick={handleButtonClick}>
+                            <img src="/icon/hamburger.svg"></img>
+                            <img src="/icon/user.svg"></img>
+                        </DropDownButton>
+                    )}
                     {isDropDown && <HeaderDropDown></HeaderDropDown>}
                 </LayoutNavigationRight>
             </NavigationBarContainer>

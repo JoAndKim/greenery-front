@@ -89,6 +89,7 @@ export const PostButton = styled.button`
     padding: 5px 15px;
     border-radius: 4px;
     font-size: 0.9rem;
+    cursor: pointer;
 
     @media (min-width: 768px) {
         border-radius: 5px;
