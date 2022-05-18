@@ -48,9 +48,21 @@ export default function Post() {
         setTitle(e.target.value);
     };
 
+    const deleteImage = (index) => {
+        const target = inputList[index].postImageUrl;
+        axios.delete("/api/image", {
+            headers: {
+                Authorization:
+                    "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzZW95ZW9uZyIsImlhdCI6MTY1MTkwNDk4OSwiZXhwIjoxNjUxOTA2Nzg5fQ.6R8aK8daFCWH2CDvNxzgEglNmTVsvUTAKDPJP5YEJYk"
+            },
+            data: { imageUrl: target }
+        });
+    };
+
     const handleRemoveClick = (e) => {
         let list = [...inputList];
         let index = e.currentTarget.id;
+        deleteImage(index);
         if (index == 0 && inputList.length === 1) {
             list[0].postImageUrl = "";
             list[0].content = "";
@@ -67,7 +79,6 @@ export default function Post() {
         const formData = new FormData();
         const file = e.target.files[0];
         formData.append("imageFile", file);
-        console.log(e.target);
         axios
             .post("/api/image", formData, {
                 headers: {
@@ -180,7 +191,7 @@ export default function Post() {
                 <form>
                     <label>
                         {isinitalImgExist && (
-                            <CotentAddBar initalImgExist>
+                            <CotentAddBar>
                                 <span>추가하기</span>
                                 <input
                                     type="file"
