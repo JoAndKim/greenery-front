@@ -5,5 +5,15 @@ import Article from "./Article/Article";
 import SignIn from "./SignIn/SignIn";
 import SignUp from "./SignUp/SignUp";
 import MyPage from "./MyPage/MyPage";
+import Recommendation from "./Recommendation/Recommendation";
 
-export { Home, Community, Post, Article, SignIn, SignUp, MyPage };
+export {
+    Home,
+    Community,
+    Post,
+    Article,
+    SignIn,
+    SignUp,
+    MyPage,
+    Recommendation
+};
