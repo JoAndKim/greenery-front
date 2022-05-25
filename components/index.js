@@ -12,6 +12,9 @@ import SideBar from "./SideBar/SideBar";
 import Comment from "./Comment/Comment";
 import Comments from "./Comments/Comments";
 
+import Survey from "./Survey/Survey";
+import StyledButton from "./StyledButton/StyledButton";
+
 export {
     TodaysPlant,
     ImgCard,
@@ -22,5 +25,7 @@ export {
     PostArticle,
     SideBar,
     Comment,
-    Comments
+    Comments,
+    Survey,
+    StyledButton
 };
