@@ -15,6 +15,9 @@ import Comments from "./Comments/Comments";
 import Survey from "./Survey/Survey";
 import StyledButton from "./StyledButton/StyledButton";
 
+import PlantCard from "./PlantCard/PlantCard";
+import PlantInfoModal from "./PlantInfoModal/PlantInfoModal";
+
 export {
     TodaysPlant,
     ImgCard,
@@ -27,5 +30,7 @@ export {
     Comment,
     Comments,
     Survey,
-    StyledButton
+    StyledButton,
+    PlantCard,
+    PlantInfoModal
 };
