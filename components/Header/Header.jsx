@@ -32,11 +32,6 @@ export default function Header(props) {
                     <LogoWrap>
                         <Link href="/">
                             <a>
-                                {/* <FormLogo
-                                    src="/icon/logo.svg"
-                                    alt="home_logo"
-                                /> */}
-
                                 <HeaderLogo alt="home_logo" />
                             </a>
                         </Link>
@@ -63,7 +58,7 @@ export default function Header(props) {
                 </LayoutNavigationMenu>
                 <LayoutNavigationRight>
                     {props.id === "post" ? (
-                        <PostButton>올리기</PostButton>
+                        <PostButton form="post-form">올리기</PostButton>
                     ) : (
                         <DropDownButton onClick={handleButtonClick}>
                             <img src="/icon/hamburger.svg"></img>

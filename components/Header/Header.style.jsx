@@ -128,6 +128,7 @@ export const UserIconWrap = styled.div`
 export const LogoWrap = styled.div`
     text-align: center;
 `;
+
 export const HeaderLogo = styled.img`
     vertical-align: bottom;
     content: url("/img/favicon.svg");
