@@ -1,6 +1,7 @@
 import "../styles/globals.css";
 import Head from "next/head";
 import { RecoilRoot } from "recoil";
+import { Layout } from "../components/index";
 
 function MyApp({ Component, pageProps }) {
     return (
@@ -21,7 +22,9 @@ function MyApp({ Component, pageProps }) {
                 <meta property="og:image" content="#" key="greenery_image" />
             </Head>
             <RecoilRoot>
-                <Component {...pageProps} />
+                <Layout>
+                    <Component {...pageProps} />
+                </Layout>
             </RecoilRoot>
         </>
     );

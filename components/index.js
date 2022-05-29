@@ -18,6 +18,8 @@ import StyledButton from "./StyledButton/StyledButton";
 import PlantCard from "./PlantCard/PlantCard";
 import PlantInfoModal from "./PlantInfoModal/PlantInfoModal";
 
+import Layout from "./Layout/Layout";
+
 export {
     TodaysPlant,
     ImgCard,
@@ -32,5 +34,6 @@ export {
     Survey,
     StyledButton,
     PlantCard,
-    PlantInfoModal
+    PlantInfoModal,
+    Layout
 };
