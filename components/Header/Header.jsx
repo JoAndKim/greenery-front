@@ -1,4 +1,8 @@
 import { useState } from "react";
+import Link from "next/link";
+import { HeaderDropDown } from "../index";
+import { useRecoilValue } from "recoil";
+import { loginState } from "../../state";
 import {
     HeaderTag,
     LayoutNavigationMenu,
@@ -15,11 +19,10 @@ import {
     Item,
     DropDownButton
 } from "./Header.style";
-import Link from "next/link";
-import { HeaderDropDown } from "../index";
 
 export default function Header(props) {
     const [isDropDown, setIsDropDown] = useState(false);
+    const isLoggedIn = useRecoilValue(loginState);
 
     const handleButtonClick = () => {
         setIsDropDown(!isDropDown);
@@ -62,10 +65,21 @@ export default function Header(props) {
                     ) : (
                         <DropDownButton onClick={handleButtonClick}>
                             <img src="/icon/hamburger.svg"></img>
-                            <img src="/icon/user.svg"></img>
+                            <img
+                                className="profileImg"
+                                src={
+                                    isLoggedIn
+                                        ? "/img/community.png"
+                                        : "/icon/user.svg"
+                                }
+                            ></img>
                         </DropDownButton>
                     )}
-                    {isDropDown && <HeaderDropDown></HeaderDropDown>}
+                    {isDropDown && (
+                        <HeaderDropDown
+                            loginState={isLoggedIn}
+                        ></HeaderDropDown>
+                    )}
                 </LayoutNavigationRight>
             </NavigationBarContainer>
         </HeaderTag>

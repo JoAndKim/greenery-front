@@ -171,7 +171,14 @@ export const DropDownButton = styled.button`
     background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%),
         #eaeaea;
 
-    img + img {
+    .profileImg {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
         margin-left: 11px;
     }
+
+    // img + img {
+    //     margin-left: 11px;
+    // }
 `;
