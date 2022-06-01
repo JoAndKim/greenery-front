@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ContentWrapper, StyledLink } from "./HeaderDropDown.style";
 
-export default function HeaderDropDown() {
+export default function HeaderDropDown({ loginState }) {
     const beforeLoginOptions = [
         {
             title: "로그인",
@@ -22,19 +22,18 @@ export default function HeaderDropDown() {
             to: "/"
         }
     ];
+    const linkOption = loginState ? afterLoginOptions : beforeLoginOptions;
 
     return (
         <ContentWrapper>
-            <Link href="/signin">
-                <StyledLink>
-                    <span>로그인</span>
-                </StyledLink>
-            </Link>
-            <Link href="/signup">
-                <StyledLink>
-                    <span>회원가입</span>
-                </StyledLink>
-            </Link>
+            {linkOption &&
+                linkOption.map((item, i) => (
+                    <Link key={i} href={item.to}>
+                        <StyledLink>
+                            <span>{item.title}</span>
+                        </StyledLink>
+                    </Link>
+                ))}
         </ContentWrapper>
     );
 }
