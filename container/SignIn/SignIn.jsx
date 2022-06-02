@@ -35,8 +35,7 @@ export default function SignIn() {
                 password: password
             })
             .then(function (response) {
-                const { accessToken } = response.data;
-                localStorage.setItem("accessToken", accessToken);
+                localStorage.setItem("userInfo", JSON.stringify(response.data));
                 router.push("/");
             })
             .catch(function (error) {
