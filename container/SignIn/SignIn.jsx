@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { useSetRecoilState } from "recoil";
+import { loginState, userInfoState } from "../../state";
 import { useRouter } from "next/router";
 import axios from "axios";
 import {
@@ -16,6 +18,9 @@ export default function SignIn() {
 
     const router = useRouter();
     const inputRef = useRef();
+
+    const setLoginState = useSetRecoilState(loginState);
+    const setUserInfoState = useSetRecoilState(userInfoState);
 
     useEffect(() => {
         inputRef.current.focus();
@@ -37,7 +42,13 @@ export default function SignIn() {
             .then(function (response) {
                 localStorage.setItem("userInfo", JSON.stringify(response.data));
                 router.push("/");
+                return response.data;
             })
+            .then(function (data) {
+                setLoginState(true);
+                setUserInfoState(data);
+            })
+
             .catch(function (error) {
                 alert(
                     "로그인을 완료할 수 없습니다. 아이디와 비밀번호를 다시 한번 확인해 주세요."
