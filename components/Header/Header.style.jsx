@@ -118,7 +118,9 @@ export const UserIconWrap = styled.div`
     height: 30px;
     border-radius: 50%;
     overflow: hidden;
-    & img {
+    margin-left: 11px;
+
+    img {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -170,15 +172,4 @@ export const DropDownButton = styled.button`
     border: none;
     background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%),
         #eaeaea;
-
-    .profileImg {
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        margin-left: 11px;
-    }
-
-    // img + img {
-    //     margin-left: 11px;
-    // }
 `;
