@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { HeaderDropDown } from "../index";
-import { useRecoilValue } from "recoil";
-import { loginState } from "../../state";
+// import { useRecoilValue } from "recoil";
+// import { loginState, userInfoState } from "../../state";
 import {
     HeaderTag,
     LayoutNavigationMenu,
@@ -23,6 +23,8 @@ import {
 export default function Header(props) {
     const [isDropDown, setIsDropDown] = useState(false);
     const isLoggedIn = useRecoilValue(loginState);
+    // const userInfo = useRecoilValue(userInfoState);
+    // const parsedUserInfo = JSON.parse(userInfo);
 
     const handleButtonClick = () => {
         setIsDropDown(!isDropDown);
@@ -48,7 +50,7 @@ export default function Header(props) {
                             </Link>
                         </Item>
                         <Item>
-                            <Link href="/recommedation" title="식물추천">
+                            <Link href="/recommendation" title="식물추천">
                                 <a>식물추천</a>
                             </Link>
                         </Item>
@@ -65,14 +67,15 @@ export default function Header(props) {
                     ) : (
                         <DropDownButton onClick={handleButtonClick}>
                             <img src="/icon/hamburger.svg"></img>
-                            <img
-                                className="profileImg"
-                                src={
-                                    isLoggedIn
-                                        ? "/img/community.png"
-                                        : "/icon/user.svg"
-                                }
-                            ></img>
+                            <UserIconWrap>
+                                {/* <img
+                                    src={
+                                        isLoggedIn
+                                            ? userInfo.profileImageUrl
+                                            : "/icon/user.svg"
+                                    }
+                                /> */}
+                            </UserIconWrap>
                         </DropDownButton>
                     )}
                     {isDropDown && (
