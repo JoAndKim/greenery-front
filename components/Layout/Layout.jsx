@@ -9,7 +9,7 @@ export default function Layout({ children }) {
         const userInfo = localStorage.getItem("userInfo");
         if (userInfo) {
             setLoginState(true);
-            setUserInfoState(userInfo);
+            setUserInfoState(JSON.parse(userInfo));
         }
     };
 
