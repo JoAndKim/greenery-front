@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { HeaderDropDown } from "../index";
-// import { useRecoilValue } from "recoil";
-// import { loginState, userInfoState } from "../../state";
+import { useRecoilValue } from "recoil";
+import { loginState, userInfoState } from "../../state";
 import {
     HeaderTag,
     LayoutNavigationMenu,
@@ -23,8 +23,7 @@ import {
 export default function Header(props) {
     const [isDropDown, setIsDropDown] = useState(false);
     const isLoggedIn = useRecoilValue(loginState);
-    // const userInfo = useRecoilValue(userInfoState);
-    // const parsedUserInfo = JSON.parse(userInfo);
+    const userInfo = useRecoilValue(userInfoState);
 
     const handleButtonClick = () => {
         setIsDropDown(!isDropDown);
@@ -68,13 +67,13 @@ export default function Header(props) {
                         <DropDownButton onClick={handleButtonClick}>
                             <img src="/icon/hamburger.svg"></img>
                             <UserIconWrap>
-                                {/* <img
+                                <img
                                     src={
                                         isLoggedIn
                                             ? userInfo.profileImageUrl
                                             : "/icon/user.svg"
                                     }
-                                /> */}
+                                />
                             </UserIconWrap>
                         </DropDownButton>
                     )}
