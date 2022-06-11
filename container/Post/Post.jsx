@@ -22,18 +22,6 @@ export default function Post() {
         }
     ]);
 
-    // const postFormData = (inputFile) => {
-    //     const formData = new FormData();
-    //     formData.append("imageFile", inputFile);
-    //     return axios
-    //         .post("/api/image", formData, {
-    //             headers: {
-    //                 "Content-Type": "multipart/form-data"
-    //             }
-    //         })
-    //         .then((response) => response.data);
-    // };
-
     const handleTitleChange = (e) => {
         setTitle(e.target.value);
     };
@@ -121,6 +109,30 @@ export default function Post() {
         setInputList(list);
     };
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (!title) {
+            alert("글 제목을 입력해주세요.");
+            return;
+        }
+        if (inputList.length === 1 && !inputList[0].postImageUrl) {
+            alert("내용을 입력해주세요.");
+            return;
+        }
+
+        const postData = {
+            title,
+            postContents: inputList
+        };
+
+        axios.post("/api/posts", postData, {
+            headers: {
+                Authorization:
+                    "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzZW95ZW9uZyIsImlhdCI6MTY1MzIyNTI3MywiZXhwIjoxNjUzMjI3MDczfQ._3ctW2DeFv9D7edGM44iE6WyLshpIPP1ygJf7P_o3mQ"
+            }
+        });
+    };
+
     return (
         <PostWrapper>
             <Header id="post" />
@@ -130,7 +142,7 @@ export default function Post() {
                     onChange={handleTitleChange}
                 />
 
-                <form>
+                <form onSubmit={handleSubmit} id="post-form">
                     {inputList.map((list, index) => {
                         return (
                             <ContentSection key={index}>
