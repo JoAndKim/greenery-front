@@ -1,4 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Header } from "../../components/index";
+import { setAxiosDefaultAccessToken } from "../../utils/index";
+import axios from "axios";
 import {
     PostTextarea,
     DisplayImg,
@@ -9,8 +12,6 @@ import {
     PostFormWrapper,
     PostWrapper
 } from "./Post.style";
-import { Header } from "../../components/index";
-import axios from "axios";
 
 export default function Post() {
     const [title, setTitle] = useState("");
@@ -21,6 +22,11 @@ export default function Post() {
             content: ""
         }
     ]);
+
+    useEffect(() => {
+        const store = localStorage.getItem("userInfo");
+        setAxiosDefaultAccessToken(JSON.parse(store));
+    }, []);
 
     const handleTitleChange = (e) => {
         setTitle(e.target.value);
@@ -125,12 +131,7 @@ export default function Post() {
             postContents: inputList
         };
 
-        axios.post("/api/posts", postData, {
-            headers: {
-                Authorization:
-                    "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzZW95ZW9uZyIsImlhdCI6MTY1MzIyNTI3MywiZXhwIjoxNjUzMjI3MDczfQ._3ctW2DeFv9D7edGM44iE6WyLshpIPP1ygJf7P_o3mQ"
-            }
-        });
+        axios.post("/api/posts", postData);
     };
 
     return (
