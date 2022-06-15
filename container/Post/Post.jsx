@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import { Header } from "../../components/index";
 import { setAxiosDefaultAccessToken } from "../../utils/index";
 import axios from "axios";
@@ -22,6 +23,7 @@ export default function Post() {
             content: ""
         }
     ]);
+    const router = useRouter();
 
     useEffect(() => {
         const store = localStorage.getItem("userInfo");
@@ -131,7 +133,10 @@ export default function Post() {
             postContents: inputList
         };
 
-        axios.post("/api/posts", postData);
+        axios.post("/api/posts", postData).then((response) => {
+            const postId = response.data;
+            router.push(`/article/${postId}`);
+        });
     };
 
     return (
