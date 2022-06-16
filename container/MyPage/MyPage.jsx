@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Header } from "../../components/index";
+import { useRecoilValue } from "recoil";
+import { loginState, userInfoState } from "../../state";
 import {
     ProfileWrapper,
     ProfileImg,
@@ -11,6 +13,8 @@ import {
 
 export default function MyPage() {
     const [category, setCategory] = useState("myPosts");
+    const isLoggedIn = useRecoilValue(loginState);
+    const userInfo = useRecoilValue(userInfoState);
 
     const handleButtonClick = (e) => {
         setCategory(e.target.id);
@@ -21,9 +25,17 @@ export default function MyPage() {
             <Header></Header>
             <ProfileWrapper>
                 <ProfileImg>
-                    <img src="/img/community.png" />
+                    <img
+                        src={
+                            isLoggedIn
+                                ? userInfo.profileImageUrl
+                                : "/icon/user.svg"
+                        }
+                    />
                 </ProfileImg>
-                <Nickname>example</Nickname>
+                <Nickname>
+                    {isLoggedIn ? userInfo.nickname : "초록친구"}
+                </Nickname>
                 <MyPost>
                     <ul>
                         <li>
