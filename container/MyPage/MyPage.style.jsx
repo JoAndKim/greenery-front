@@ -58,41 +58,49 @@ export const MyPost = styled.div`
 
     margin-bottom: 20px;
 
-    & ul {
+    ul {
         list-style: none;
         margin: 0 auto;
         padding: 0;
         display: flex;
         justify-content: center;
     }
-    li {
-        /* box-shadow: 0px 4px 0px var(--primary);
-    padding-bottom: 16px; */
-    }
+
+    // li {
+    //     box-shadow: 0px 4px 0px var(--primary);
+    //     // padding-bottom: 16px;
+    // }
+
     li + li {
         margin-left: 20px;
     }
-
-    button {
-        border: 0;
-        outline: 0;
-        background-color: transparent;
-
-        font-family: Roboto;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 18px;
-        line-height: 21px;
-
-        align-items: center;
-        text-align: right;
-        cursor: pointer;
-
-        color: #000000;
-
-        padding-bottom: 12px;
-    }
 `;
+
+export const IndexButton = styled.button`
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+
+    align-items: center;
+    text-align: right;
+    cursor: pointer;
+    ${(props) =>
+        props.id === props.currentstate
+            ? `
+    color: var(--primary);
+    box-shadow: 0px 4px 0px var(--primary);
+    `
+            : `color: black`}
+
+    padding-bottom: 14px;
+`;
+
 export const PostCardborder = styled.div`
     width: 1134px;
     height: 1px;

@@ -8,7 +8,8 @@ import {
     PostCardsWrapper,
     PostCardborder,
     Nickname,
-    MyPost
+    MyPost,
+    IndexButton
 } from "./MyPage.style";
 
 export default function MyPage() {
@@ -39,14 +40,23 @@ export default function MyPage() {
                 <MyPost>
                     <ul>
                         <li>
-                            <button id="myPosts" onClick={handleButtonClick}>
+                            <IndexButton
+                                id="myPosts"
+                                currentstate={category}
+                                onClick={handleButtonClick}
+                            >
                                 내가 작성한 글
-                            </button>
+                            </IndexButton>
+                            <hr></hr>
                         </li>
                         <li>
-                            <button id="likedPosts" onClick={handleButtonClick}>
+                            <IndexButton
+                                id="likedPosts"
+                                currentstate={category}
+                                onClick={handleButtonClick}
+                            >
                                 좋아요 한 글
-                            </button>
+                            </IndexButton>
                         </li>
                     </ul>
                 </MyPost>
