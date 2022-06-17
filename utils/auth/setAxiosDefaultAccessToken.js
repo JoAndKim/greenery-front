@@ -1,7 +1,6 @@
 import axios from "axios";
 
-export const setAxiosDefaultAccessToken = (response) => {
-    const access_token = response.data.accessToken;
-
+export default function setAxiosDefaultAccessToken(data) {
+    const access_token = data.accessToken;
     axios.defaults.headers.common["Authorization"] = access_token;
-};
+}
