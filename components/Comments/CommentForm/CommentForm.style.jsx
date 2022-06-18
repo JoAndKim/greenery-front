@@ -11,6 +11,7 @@ export const UserProfileImg = styled.div`
     margin-right: 10px;
 
     img {
+        margin-top: 6px;
         width: 30px;
         height: 30px;
         border-radius: 50%;
@@ -18,13 +19,16 @@ export const UserProfileImg = styled.div`
 `;
 
 export const CommentSection = styled.div`
-    display: flex;
-    justify-content: space-between;
     width: 100%;
-    height: 40px;
-    border: 1px solid var(--gray);
-    border-radius: 5px;
-    background: transparent;
+    form {
+        display: flex;
+        justify-content: space-between;
+
+        height: 40px;
+        border: 1px solid var(--gray);
+        border-radius: 5px;
+        background: transparent;
+    }
 `;
 
 export const StyledInput = styled.input`
@@ -33,6 +37,11 @@ export const StyledInput = styled.input`
     width: 100%;
     border: none;
     padding-left: 20px;
+
+    &:focus {
+        outline: 1.5px solid var(--primary);
+        border-radius: 5px;
+    }
 `;
 
 export const StyledButton = styled.button`

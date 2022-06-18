@@ -9,7 +9,6 @@ import Footer from "./Footer/Footer";
 import PostArticle from "./PostArticle/PostArticle";
 import SideBar from "./SideBar/SideBar";
 
-import Comment from "./Comment/Comment";
 import Comments from "./Comments/Comments";
 
 import Survey from "./Survey/Survey";
@@ -29,7 +28,6 @@ export {
     Footer,
     PostArticle,
     SideBar,
-    Comment,
     Comments,
     Survey,
     StyledButton,

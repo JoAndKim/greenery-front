@@ -1,35 +1,76 @@
-import { CommentsArticle, CommentWrapper, CommentInfo } from "./Comments.style";
-// {
-//     id: 1,
-//     groupId: 1,
-//     postId: 1,
-//     class: 0,
-//     user: {
-//         id: 1,
-//         profileImageUrl: "http://s3.aws.com/das.jpg",
-//         nickname: "dongkyu",
-//     },
-//     content: "안녕하세요 식물 이쁘네요",
-//     regDate: "2022-03-20 12:13:00",
-// },
+import CommentForm from "./CommentForm/CommentForm";
+import Comment from "./Comment/Comment";
+// Comments 에서 Comment와 CommentForm를 사용
+// 이 곳에서 api 사용
 
 export default function Comments() {
+    const dummy = {
+        comments: [
+            [
+                {
+                    id: 1,
+                    groupId: 1,
+                    postId: 1,
+                    layer: 0,
+                    user: {
+                        id: 1,
+                        profileImageUrl: "http://s3.aws.com/das.jpg",
+                        nickname: "dongkyu"
+                    },
+                    content: "첫번째 댓글",
+                    regDate: "2022-03-20 12:13:00"
+                },
+                {
+                    id: 2,
+                    groupId: 1,
+                    postId: 1,
+                    layer: 1,
+                    user: {
+                        id: 2,
+                        profileImageUrl: "http://s3.aws.com/daseqwe.jpg",
+                        nickname: "seoyeong"
+                    },
+                    content: "첫번째 댓글의 대댓글",
+                    regDate: "2022-03-20 12:15:00"
+                }
+            ],
+            [
+                {
+                    id: 3,
+                    groupId: 2,
+                    postId: 1,
+                    layer: 0,
+                    user: {
+                        id: 1,
+                        profileImageUrl: "http://s3.aws.com/das.jpg",
+                        nickname: "dongkyu"
+                    },
+                    content: "두번째 댓글",
+                    regDate: "2022-03-20 12:13:00"
+                },
+                {
+                    id: 4,
+                    groupId: 2,
+                    postId: 1,
+                    layer: 1,
+                    user: {
+                        id: 2,
+                        profileImageUrl: "http://s3.aws.com/daseqwe.jpg",
+                        nickname: "seoyeong"
+                    },
+                    content: "두번째 댓글의 대댓글",
+                    regDate: "2022-03-20 12:15:00"
+                }
+            ]
+        ]
+    };
     return (
-        <CommentsArticle>
-            <CommentWrapper>
-                <img src="/img/community.png" alt="프로필 이미지" />
-                <CommentInfo>
-                    <p>
-                        <strong>what</strong>
-                        whattheeaewfadsfsdfasdfasdfas
-                    </p>
-                    <span>1개월 전</span>
-
-                    <button>
-                        · <strong>답글달기</strong>
-                    </button>
-                </CommentInfo>
-            </CommentWrapper>
-        </CommentsArticle>
+        <>
+            <h2>댓글</h2>
+            <CommentForm></CommentForm>
+            {dummy.comments.map((group) => {
+                console.log(group);
+            })}
+        </>
     );
 }

@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Main, PostArticleWrapper } from "./Article.style";
 import axios from "axios";
 import { useRouter } from "next/router";
@@ -5,10 +6,9 @@ import {
     Header,
     SideBar,
     PostArticle,
-    Comment,
+    Comments,
     Footer
 } from "../../components/index";
-import { useState, useEffect } from "react";
 
 export default function Article() {
     const [postData, setPostData] = useState({});
@@ -55,7 +55,7 @@ export default function Article() {
                     liked
                 />
 
-                <Comment />
+                <Comments />
             </PostArticleWrapper>
             <Footer />
         </Main>
