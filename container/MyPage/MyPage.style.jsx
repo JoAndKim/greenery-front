@@ -8,7 +8,7 @@ export const ProfileWrapper = styled.main`
 `;
 
 export const ProfileImg = styled.div`
-  margin-top: 120px;
+  margin-top: 200px;
   margin-bottom: 24px;
 
   img {
@@ -23,6 +23,7 @@ export const ProfileImg = styled.div`
 
   @media (max-width: 767px) {
     margin-top: 80px;
+    margin-bottom: 10px;
     & img {
       width: 100px;
       height: 100px;
@@ -49,7 +50,7 @@ export const Nickname = styled.div`
     @media (max-width: 767px) {
         width: 100%;
         font-size: 28px;
-        margin-bottom: 50px;
+        margin-bottom: 20px;
     }
 `;
 export const MyPost = styled.div`
@@ -65,11 +66,6 @@ export const MyPost = styled.div`
         display: flex;
         justify-content: center;
     }
-
-    // li {
-    //     box-shadow: 0px 4px 0px var(--primary);
-    //     // padding-bottom: 16px;
-    // }
 
     li + li {
         margin-left: 20px;
