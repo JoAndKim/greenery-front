@@ -48,7 +48,6 @@ export default function SignIn() {
                 setLoginState(true);
                 setUserInfoState(data);
             })
-
             .catch(function (error) {
                 alert(
                     "로그인을 완료할 수 없습니다. 아이디와 비밀번호를 다시 한번 확인해 주세요."
