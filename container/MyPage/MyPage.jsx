@@ -3,6 +3,7 @@ import { Header } from "../../components/index";
 import { useRecoilValue } from "recoil";
 import { setAxiosDefaultAccessToken } from "../../utils/index";
 import { loginState, userInfoState } from "../../state";
+import { PostCard } from "../../components/index";
 import {
     ProfileWrapper,
     ProfileImg,
@@ -12,17 +13,21 @@ import {
     MyPost,
     IndexButton
 } from "./MyPage.style";
+import axios from "axios";
 
 export default function MyPage() {
     const [category, setCategory] = useState("myPosts");
     const isLoggedIn = useRecoilValue(loginState);
     const userInfo = useRecoilValue(userInfoState);
 
-    // const [myPosts, setMyposts] = useState;
+    const [myPosts, setMyposts] = useState();
 
     useEffect(() => {
         const store = localStorage.getItem("userInfo");
         setAxiosDefaultAccessToken(JSON.parse(store));
+        axios.get("/api/posts/me").then((response) => {
+            setMyposts(response.data.posts);
+        });
     }, []);
 
     const handleButtonClick = (e) => {
@@ -69,24 +74,20 @@ export default function MyPage() {
                     </ul>
                 </MyPost>
                 <PostCardborder />
-                <span>{category}</span>
 
                 <PostCardsWrapper>
-                    {/* {category === "myPosts" &&
-                        posts.map(
-                            ({ id, title, imgUrl, likes, author }, index) => {
-                                return (
-                                    <PostCard
-                                        key={index}
-                                        id={id}
-                                        imgUrl={imgUrl}
-                                        title={title}
-                                        author={author}
-                                        likes={likes}
-                                    />
-                                );
-                            }
-                        )} */}
+                    {category === "myPosts" &&
+                        myPosts.map((card) => (
+                            <PostCard
+                                key={card.id}
+                                id={card.id}
+                                mainImageUrl={card.mainImageUrl}
+                                title={card.title}
+                                user={card.user}
+                                likes={card.likes}
+                                hits={card.hits}
+                            />
+                        ))}
 
                     {/* {category === "likedPosts" &&
                         likePosts.map(
