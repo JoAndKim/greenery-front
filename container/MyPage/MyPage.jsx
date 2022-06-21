@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Header } from "../../components/index";
 import { useRecoilValue } from "recoil";
+import { setAxiosDefaultAccessToken } from "../../utils/index";
 import { loginState, userInfoState } from "../../state";
 import {
     ProfileWrapper,
@@ -16,6 +17,13 @@ export default function MyPage() {
     const [category, setCategory] = useState("myPosts");
     const isLoggedIn = useRecoilValue(loginState);
     const userInfo = useRecoilValue(userInfoState);
+
+    // const [myPosts, setMyposts] = useState;
+
+    useEffect(() => {
+        const store = localStorage.getItem("userInfo");
+        setAxiosDefaultAccessToken(JSON.parse(store));
+    }, []);
 
     const handleButtonClick = (e) => {
         setCategory(e.target.id);
