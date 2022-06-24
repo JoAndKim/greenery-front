@@ -7,14 +7,8 @@ module.exports = {
         return [
             {
                 source: "/api/:direction*",
-                destination: `${API_URL}/api/:direction*`,
-            },
+                destination: `${API_URL}/api/:direction*`
+            }
         ];
-    },
+    }
 };
-
-// {
-//     source: "/login/direct",
-//     destination: `${API_URL}/login/direct`,
-// },
-// { source: "/posts", destination: `${API_URL}/posts` },
