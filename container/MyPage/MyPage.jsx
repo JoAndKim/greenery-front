@@ -21,12 +21,16 @@ export default function MyPage() {
     const userInfo = useRecoilValue(userInfoState);
 
     const [myPosts, setMyposts] = useState();
+    const [likedPosts, setLikedPosts] = useState();
 
     useEffect(() => {
         const store = localStorage.getItem("userInfo");
         setAxiosDefaultAccessToken(JSON.parse(store));
         axios.get("/api/posts/me").then((response) => {
             setMyposts(response.data.posts);
+        });
+        axios.get("/api/posts/me/likes").then((response) => {
+            setLikedPosts(response.data.posts);
         });
     }, []);
 
@@ -77,7 +81,7 @@ export default function MyPage() {
 
                 <PostCardsWrapper>
                     {category === "myPosts" &&
-                        myPosts.map((card) => (
+                        myPosts?.map((card) => (
                             <PostCard
                                 key={card.id}
                                 id={card.id}
@@ -88,24 +92,18 @@ export default function MyPage() {
                                 hits={card.hits}
                             />
                         ))}
-
-                    {/* {category === "likedPosts" &&
-                        likePosts.map(
-                            ({ id, title, imgUrl, likes, author }, index) => {
-                                return (
-                                    <PostCard
-                                        key={index}
-                                        id={id}
-                                        imgUrl={imgUrl}
-                                        title={title}
-                                        author={author}
-                                        likes={likes}
-                                    />
-                                );
-                            }
-                        )} */}
-
-                    {/* <div ref={pageEnd} style={{ position: "hidden" }}></div> */}
+                    {category === "likedPosts" &&
+                        likedPosts?.map((card) => (
+                            <PostCard
+                                key={card.id}
+                                id={card.id}
+                                mainImageUrl={card.mainImageUrl}
+                                title={card.title}
+                                user={card.user}
+                                likes={card.likes}
+                                hits={card.hits}
+                            />
+                        ))}
                 </PostCardsWrapper>
             </ProfileWrapper>
         </>
