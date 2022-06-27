@@ -114,6 +114,7 @@ export const PostCardsWrapper = styled.div`
     grid-template-columns: 360px 360px 360px;
     grid-gap: 80px 28px;
     margin-top: 40px;
+    margin-bottom: 200px;
 
     @media (max-width: 1140px) {
         grid-template-columns: 360px 360px;
