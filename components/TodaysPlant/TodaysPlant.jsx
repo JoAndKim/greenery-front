@@ -1,17 +1,14 @@
 import {
     TodaysPlantSection,
     ContentBox,
-    TodaysLink,
+    TodaysLink
 } from "./TodaysPlant.style";
 
 export default function TodaysPlant({ imgUrl, content, postId }) {
     const translateContent = (content) => {
         const newContent = content.split("**");
         return newContent.map((text, idx) => {
-            if (idx % 2 === 1) {
-                return <strong key={idx}>{text}</strong>;
-            }
-            return text;
+            return <div>{text}</div>;
         });
     };
     return (
@@ -22,7 +19,9 @@ export default function TodaysPlant({ imgUrl, content, postId }) {
                 <p>
                     {translateContent(content)}
                     <TodaysLink href={`/article/${postId}`}>
-                        <a>여기</a>
+                        <a>
+                            <b>여기</b>
+                        </a>
                     </TodaysLink>
                     를 눌러주세요
                 </p>

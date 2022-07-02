@@ -19,7 +19,7 @@ export const TodaysPlantSection = styled.section`
 
     h3 {
         margin: 0;
-        padding: 0 40px 30px;
+        padding: 0 50px 30px;
         font-size: 28px;
     }
 
