@@ -8,6 +8,9 @@ function MyApp({ Component, pageProps }) {
         <>
             <RecoilRoot>
                 <Layout>
+                    <Head>
+                        <title>초록친구</title>
+                    </Head>
                     <Component {...pageProps} />
                 </Layout>
             </RecoilRoot>

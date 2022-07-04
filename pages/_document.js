@@ -42,7 +42,7 @@ class MyDocument extends Document {
                         rel="stylesheet"
                     />
                     <link rel="shortcut icon" href="/favicon.svg" />
-                    <title>초록친구</title>
+
                     <meta
                         property="og:title"
                         content="초록친구 바로가기"
