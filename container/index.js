@@ -6,6 +6,7 @@ import SignIn from "./SignIn/SignIn";
 import SignUp from "./SignUp/SignUp";
 import MyPage from "./MyPage/MyPage";
 import Recommendation from "./Recommendation/Recommendation";
+import Wiki from "./Wiki/Wiki";
 
 export {
     Home,
@@ -15,5 +16,6 @@ export {
     SignIn,
     SignUp,
     MyPage,
-    Recommendation
+    Recommendation,
+    Wiki
 };
