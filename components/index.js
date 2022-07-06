@@ -16,6 +16,7 @@ import StyledButton from "./StyledButton/StyledButton";
 
 import PlantCard from "./PlantCard/PlantCard";
 import PlantInfoModal from "./PlantInfoModal/PlantInfoModal";
+import PlantDetail from "./PlantDetail/PlantDetail";
 
 import Layout from "./Layout/Layout";
 
@@ -33,5 +34,6 @@ export {
     StyledButton,
     PlantCard,
     PlantInfoModal,
+    PlantDetail,
     Layout
 };
