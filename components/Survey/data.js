@@ -2,81 +2,80 @@ const icon_route = "icon/";
 export const survey_data = [
     {
         num: 1,
-        title: "초록이가 있을 곳에 햇빛이 얼마나 들어오나요?",
-        subtitle:
-            "( *조도 측정 어플을 활용하면 더욱 어울리는 초록이를 만날 수 있어요!)",
-        type: "brightness",
+        title: "어떤 종류의 식물을 찾고있나요?",
+        subtitle: null,
+        type: "group",
         questions: [
             {
-                id: "1",
-                text: "눈이 불편하지 않은 정도에요~ (300 ~ 800 Lux)",
-                icon: icon_route + "sunglasses.svg"
+                id: 0,
+                text: "잎이 예쁘게 피는 식물이면 좋겠어요",
+                icon: icon_route + "herb.svg"
             },
             {
-                id: "2",
-                text: "햇살 좋은 날 눈 뜨기 힘든 정도에요~ (800 ~ 1500 Lux)",
-                icon: icon_route + "sunny.svg"
+                id: 1,
+                text: "꽃이나 열매가 열리는 식물이면 좋겠어요",
+                icon: icon_route + "sakura.svg"
             },
             {
-                id: "3",
-                text: "카메라 플래시 라이트를 보는 정도로 눈을 뜨기 힘들어요~ (1500 ~ 10000 Lux)",
-                icon: icon_route + "flash.svg"
+                id: 2,
+                text: "다육식물이면 좋겠어요",
+                icon: icon_route + "cactus.svg"
             }
         ]
     },
     {
         num: 2,
-        title: "초록이가 살게 될 장소는 따뜻한가요?",
+        title: "식물을 키워본 경험이 많으신가요?",
         subtitle: null,
-        type: "growthTemperature",
+        type: "competence",
         questions: [
             {
-                id: "82002",
-                text: "조금 선선하지만 춥지 않아요! (16~20℃)",
-                icon: icon_route + "wind.svg"
+                id: 0,
+                text: "아니요. 초보자가 키우기 좋은 식물로 추천해주세요!",
+                icon: icon_route + "folded-hands.svg"
             },
             {
-                id: "82003",
-                text: "네! 따뜻한 장소에 있을 거에요! (21~25℃)",
-                icon: icon_route + "warm.svg"
+                id: 1,
+                text: "네. 어떤 식물이든 잘 키울 자신이 있어요! ",
+                icon: icon_route + "power.svg"
             }
         ]
     },
     {
         num: 3,
-        title: "초록이가 언제 꽃을 피우기 원하시나요?",
+        title: "식물이 있을 곳에 햇빛이 많이 들어오나요?",
         subtitle: null,
-        type: "bloomingSeason",
+        type: "brightness",
 
         questions: [
             {
-                id: "1",
-                text: "봄에 피었으면 좋겠어요!",
-                icon: icon_route + "sakura.svg"
+                id: 0,
+                text: "아니요. 해가 잘 들지 않아요.",
+                icon: icon_route + "sunny.svg"
             },
             {
-                id: "2",
-                text: "여름에 피었으면 좋겠어요!",
-                icon: icon_route + "watermelon.svg"
+                id: 1,
+                text: "네. 햇빛이 강하게 들어와요.",
+                icon: icon_route + "sunglasses.svg"
             }
         ]
     },
     {
         num: 4,
-        title: "초록이 향기가 나길 원하시나요?",
+        title: "어떤 이유로 식물 추천을 받고 계신가요?",
         subtitle: null,
-        type: "smell",
+        type: null,
 
         questions: [
             {
-                id: "1",
-                text: "향이 없었으면 좋겠어요!",
-                icon: icon_route + "nose.svg"
+                id: 0,
+                text: "지인에게 선물하고 싶어요!",
+                icon: icon_route + "gift.svg"
             },
             {
-                id: "2",
-                text: "은은하게 향이 느껴지면 좋겠어요!",
-                icon: icon_route + "nose_scent.svg"
+                id: 1,
+                text: "제가 직접 키우고 싶어요!",
+                icon: icon_route + "plant.svg"
             }
         ]
     }
