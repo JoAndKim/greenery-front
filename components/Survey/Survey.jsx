@@ -10,9 +10,19 @@ import {
 import { StyledButton } from "../../components/index";
 import { survey_data } from "./data";
 
-export default function Survey({ phase, setPhase }) {
+export default function Survey({
+    phase,
+    setPhase,
+    answers,
+    addAnswerToFilter
+}) {
     const data = survey_data.filter((data) => data.num === phase);
     const [{ title, subtitle, questions, type }] = data;
+
+    const saveFilter = (e, id) => {
+        e.preventDefault();
+        addAnswerToFilter(type, id);
+    };
 
     const moveToPreviousPhase = () => {
         setPhase(phase - 1);
@@ -41,12 +51,12 @@ export default function Survey({ phase, setPhase }) {
                     {questions.map((item) => {
                         return (
                             <QuestionBar
-                            // active={item.id === answers[type][0]}
-                            // key={item.id}
+                                active={item.id === answers[type]}
+                                key={item.id}
                             >
                                 <a
                                     href="#null"
-                                    onClick={(evt) => saveFilter(evt, item.id)}
+                                    onClick={(e) => saveFilter(e, item.id)}
                                 >
                                     <img src={item.icon} alt="Question icon" />
                                     <span>{item.text}</span>
