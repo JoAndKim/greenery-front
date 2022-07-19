@@ -17,11 +17,12 @@ export const BlurBackground = styled.section`
 export const Modal = styled.div`
     background: #fefefe;
     width: clamp(0px, 100%, 600px);
-    height: 100%;
+    // height: 100%;
     z-index: 30000;
     border-radius: 10px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     position: relative;
+    top: calc(50% - 300px);
     margin: 0 auto;
     overflow-y: auto;
 `;
