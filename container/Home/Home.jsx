@@ -5,14 +5,14 @@ import {
     ImgCard,
     PostCard,
     Header,
-    Footer,
+    Footer
 } from "../../components/index";
 import {
     Main,
     PostContentsWrapper,
     Title,
     PostCardBox,
-    StyledLink,
+    StyledLink
 } from "./Home.style";
 
 export default function Home() {
@@ -25,17 +25,13 @@ export default function Home() {
 
     return (
         <>
-            {/* <HeadInfo title="초록친구 헤헤" /> */}
             <Header />
             <Main>
-                {/* {plantData && (
-                  <TodaysPlant
-                      imgUrl={plantData.imgUrl}
-                      content={plantData.content}
-                      postId={plantData.postId}
-                  />
-              )} */}
-                <TodaysPlant imgUrl="img/plant.png" content="hey" postId={3} />
+                <TodaysPlant
+                    imgUrl="img/todaysplant.jpeg"
+                    content="오늘의 초록친구는 김미순님의 '오뚝이' 입니다.**오뚝이는 미순님과 함께 한지 2년된 엔젤스킨종 식물이에요.**담녹빛 잎이 정말 사랑스럽네요!**미순님의 정원이 더 궁금하시다면, "
+                    postId={3}
+                />
 
                 <PostContentsWrapper>
                     <Title>
