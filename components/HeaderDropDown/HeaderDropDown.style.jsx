@@ -29,3 +29,7 @@ export const StyledLink = styled.a`
         margin-left: 28px;
     }
 `;
+
+export const ColoredSpan = styled.span`
+    color: red;
+`;

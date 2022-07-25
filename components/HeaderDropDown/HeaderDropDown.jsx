@@ -1,9 +1,13 @@
 import Link from "next/link";
 import { loginState, userInfoState } from "../../state";
 import { useResetRecoilState } from "recoil";
-import { ContentWrapper, StyledLink } from "./HeaderDropDown.style";
+import {
+    ContentWrapper,
+    StyledLink,
+    ColoredSpan
+} from "./HeaderDropDown.style";
 
-export default function HeaderDropDown({ loginState }) {
+export default function HeaderDropDown({ isLoggedIn }) {
     const resetUserState = useResetRecoilState(userInfoState);
     const resetLoginState = useResetRecoilState(loginState);
 
@@ -17,34 +21,37 @@ export default function HeaderDropDown({ loginState }) {
             to: "/signup"
         }
     ];
-    const afterLoginOptions = [
-        {
-            title: "마이페이지",
-            to: "/mypage"
-        },
-        {
-            title: "로그아웃",
-            to: "/"
-        }
-    ];
 
     const handleLogout = () => {
         resetUserState();
         resetLoginState();
         localStorage.clear();
     };
-    const linkOption = loginState ? afterLoginOptions : beforeLoginOptions;
 
     return (
         <ContentWrapper>
-            {linkOption &&
-                linkOption.map((item, i) => (
+            {isLoggedIn ? (
+                <>
+                    <Link href="/mypage">
+                        <StyledLink>
+                            <span>마이페이지</span>
+                        </StyledLink>
+                    </Link>
+                    <Link href="/signin">
+                        <StyledLink onClick={handleLogout}>
+                            <ColoredSpan>로그아웃</ColoredSpan>
+                        </StyledLink>
+                    </Link>
+                </>
+            ) : (
+                beforeLoginOptions.map((item, i) => (
                     <Link key={i} href={item.to}>
                         <StyledLink>
                             <span>{item.title}</span>
                         </StyledLink>
                     </Link>
-                ))}
+                ))
+            )}
         </ContentWrapper>
     );
 }

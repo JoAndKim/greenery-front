@@ -79,7 +79,7 @@ export default function Header(props) {
                     )}
                     {isDropDown && (
                         <HeaderDropDown
-                            loginState={isLoggedIn}
+                            isLoggedIn={isLoggedIn}
                         ></HeaderDropDown>
                     )}
                 </LayoutNavigationRight>
