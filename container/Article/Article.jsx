@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { Main, PostArticleWrapper } from "./Article.style";
+import { useState, useEffect, useRef } from "react";
+import { Main, PostArticleWrapper, CommentSection } from "./Article.style";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { setAxiosDefaultAccessToken } from "../../utils/index";
@@ -7,6 +7,7 @@ import {
     Header,
     SideBar,
     PostArticle,
+    CommentForm,
     Comments,
     Footer
 } from "../../components/index";
@@ -14,9 +15,12 @@ import {
 export default function Article() {
     const [postData, setPostData] = useState({});
     const router = useRouter();
+    const commentRef = useRef();
 
     const { id, title, likes, likeStatus, postContents, regDate, user } =
         postData;
+
+    const [isPostLiked, setIsPostLiked] = useState(likeStatus);
 
     useEffect(async () => {
         if (!router.isReady) return;
@@ -27,6 +31,19 @@ export default function Article() {
         const store = localStorage.getItem("userInfo");
         setAxiosDefaultAccessToken(JSON.parse(store));
     }, [router.isReady]);
+
+    const handleLikeClick = () => {
+        axios.post(`/api/posts/${id}/likes`).then(() => {
+            setIsPostLiked(true);
+        });
+    };
+
+    const handleCommentClick = () => {
+        commentRef.current.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    };
 
     const handleTrashClick = () => {
         axios
@@ -48,6 +65,10 @@ export default function Article() {
             });
     };
 
+    const handleUpdateClick = () => {
+        router.push({ pathname: "/post", query: { mode: "edit", postId: id } });
+    };
+
     return (
         <Main>
             <Header />
@@ -67,12 +88,17 @@ export default function Article() {
                     />
                 )}
                 <SideBar
-                    // likeHandler={handleLikeClick}
-                    // commentHandler={handleCommentClick}
+                    isPostLiked={isPostLiked}
+                    likeHandler={handleLikeClick}
+                    commentHandler={handleCommentClick}
                     trashHandler={handleTrashClick}
-                    // updateHandler={handleUpdateClick}
+                    updateHandler={handleUpdateClick}
                 />
-                <Comments postId={id} />
+                <CommentSection>
+                    <h2 ref={commentRef}>댓글</h2>
+                    <CommentForm />
+                    <Comments postId={id} />
+                </CommentSection>
             </PostArticleWrapper>
             <Footer />
         </Main>

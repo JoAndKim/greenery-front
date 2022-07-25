@@ -28,6 +28,13 @@ export default function Post() {
     useEffect(() => {
         const store = localStorage.getItem("userInfo");
         setAxiosDefaultAccessToken(JSON.parse(store));
+        if (router.query.mode) {
+            const postId = router.query.postId;
+            axios.get(`/api/posts/${postId}`).then((response) => {
+                setTitle(response.data.title);
+                setInputList(response.data.postContents);
+            });
+        }
     }, []);
 
     const handleTitleChange = (e) => {
@@ -37,10 +44,6 @@ export default function Post() {
     const deleteImage = (index) => {
         const target = inputList[index].postImageUrl;
         axios.delete("/api/image", {
-            headers: {
-                Authorization:
-                    "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzZW95ZW9uZyIsImlhdCI6MTY1MTkwNDk4OSwiZXhwIjoxNjUxOTA2Nzg5fQ.6R8aK8daFCWH2CDvNxzgEglNmTVsvUTAKDPJP5YEJYk"
-            },
             data: { imageUrl: target }
         });
     };
@@ -110,7 +113,7 @@ export default function Post() {
             .catch((error) => console.log(error));
     };
 
-    const handleTextAreaBlur = (e) => {
+    const handleTextAreaChange = (e) => {
         let list = [...inputList];
         let index = e.target.id;
         list[index].content = e.target.value;
@@ -133,10 +136,24 @@ export default function Post() {
             postContents: inputList
         };
 
-        axios.post("/api/posts", postData).then((response) => {
-            const postId = response.data;
-            router.push(`/article/${postId}`);
-        });
+        if (router.query.mode) {
+            const postId = router.query.postId;
+            axios
+                .put(`/api/posts/${postId}`, postData)
+                .then(() => {
+                    router.push(`/article/${postId}`);
+                })
+                .catch(() => {
+                    alert(
+                        "글 수정을 완료할 수 없습니다. 재로그인이 필요합니다."
+                    );
+                });
+        } else {
+            axios.post("/api/posts", postData).then((response) => {
+                const postId = response.data;
+                router.push(`/article/${postId}`);
+            });
+        }
     };
 
     return (
@@ -145,6 +162,7 @@ export default function Post() {
             <PostFormWrapper>
                 <PostTitle
                     placeholder="제목을 입력해주세요."
+                    value={title}
                     onChange={handleTitleChange}
                 />
 
@@ -187,9 +205,10 @@ export default function Post() {
 
                                 <PostTextarea
                                     id={index}
+                                    value={list.content}
                                     name="content"
                                     placeholder="내용을 입력하세요."
-                                    onBlur={handleTextAreaBlur}
+                                    onChange={handleTextAreaChange}
                                 />
                             </ContentSection>
                         );
