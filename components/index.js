@@ -10,6 +10,7 @@ import PostArticle from "./PostArticle/PostArticle";
 import SideBar from "./SideBar/SideBar";
 
 import Comments from "./Comments/Comments";
+import CommentForm from "./CommentForm/CommentForm";
 
 import Survey from "./Survey/Survey";
 import StyledButton from "./StyledButton/StyledButton";
@@ -33,6 +34,7 @@ export {
     PostArticle,
     SideBar,
     Comments,
+    CommentForm,
     Survey,
     StyledButton,
     PlantCard,
