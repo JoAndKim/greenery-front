@@ -21,6 +21,8 @@ import PlantGrid from "./PlantGrid/PlantGrid";
 
 import Layout from "./Layout/Layout";
 
+import WikiFilter from "./WikiFilter/WikiFilter";
+
 export {
     TodaysPlant,
     ImgCard,
@@ -37,5 +39,6 @@ export {
     PlantInfoModal,
     PlantDetail,
     PlantGrid,
-    Layout
+    Layout,
+    WikiFilter
 };

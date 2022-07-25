@@ -4,7 +4,7 @@ export const FilterContainer = styled.div`
     width: 100%;
     border: 1px solid #e5e5e5;
     border-radius: 3px;
-    margin: 30px 0;
+    margin-top: 30px;
 `;
 
 export const Filter = styled.div`
@@ -12,6 +12,7 @@ export const Filter = styled.div`
     display: flex;
     height: 100%;
     flex-direction: column;
+    margin-bottom: 0.5px;
 
     & + div {
         border-top: 1px solid #e5e5e5;

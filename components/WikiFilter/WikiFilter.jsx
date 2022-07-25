@@ -3,16 +3,10 @@ import { filter_data } from "./data";
 import { FilterContainer, Filter, Title, Items } from "./WikiFilter.style";
 
 export default function WikiFilter({ filterRef }) {
-    function handleCheck(type, value) {
-        const filter_type = filterRef.current[type];
-        const index = filter_type.indexOf(value);
-        if (index === -1) {
-            filter_type.push(value);
-            filter_type.sort((a, b) => a - b);
-        } else {
-            filter_type.splice(index, 1);
-        }
-    }
+    const handleCheck = (type, value) => {
+        filterRef.current[type] = parseInt(value);
+    };
+
     return (
         <FilterContainer>
             {filter_data.map((data) => (
