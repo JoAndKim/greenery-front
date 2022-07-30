@@ -16,7 +16,6 @@ export const ContentsWrapper = styled.div`
 `;
 
 export const Logo = styled.img`
-    content: url("img/logo.svg");
     display: block;
     margin: 0 auto;
     margin-bottom: 30px;
@@ -56,4 +55,20 @@ export const SubmitButton = styled.button`
         cursor: pointer;
         opacity: 0.9;
     }
+`;
+
+export const StyledSpan = styled.span`
+    color: var(--lighter-text);
+    font-size: 14px;
+
+    &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+`;
+
+export const LinkWrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
 `;

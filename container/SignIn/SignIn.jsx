@@ -8,7 +8,9 @@ import {
     ContentsWrapper,
     Logo,
     Input,
-    SubmitButton
+    SubmitButton,
+    StyledSpan,
+    LinkWrapper
 } from "./SignIn.style";
 import { useState, useRef, useEffect } from "react";
 
@@ -41,7 +43,7 @@ export default function SignIn() {
             })
             .then(function (response) {
                 localStorage.setItem("userInfo", JSON.stringify(response.data));
-                router.push("/");
+                router.replace("/");
                 return response.data;
             })
             .then(function (data) {
@@ -60,7 +62,7 @@ export default function SignIn() {
             <ContentsWrapper>
                 <Link href="/">
                     <a>
-                        <Logo />
+                        <Logo src={"img/logo.svg"} />
                     </a>
                 </Link>
                 <form onSubmit={handleSubmit}>
@@ -77,8 +79,16 @@ export default function SignIn() {
                         placeholder="비밀번호"
                         onChange={handlePasswordChange}
                     />
+
                     <SubmitButton type="submit">로그인</SubmitButton>
                 </form>
+                <LinkWrapper>
+                    <Link href="/signup">
+                        <a>
+                            <StyledSpan>아직 회원이 아니신가요?</StyledSpan>
+                        </a>
+                    </Link>
+                </LinkWrapper>
             </ContentsWrapper>
         </Main>
     );
