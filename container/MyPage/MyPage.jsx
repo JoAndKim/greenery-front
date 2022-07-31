@@ -40,7 +40,7 @@ export default function MyPage() {
 
     return (
         <>
-            <Header></Header>
+            <Header />
             <ProfileWrapper>
                 <ProfileImg>
                     <img
