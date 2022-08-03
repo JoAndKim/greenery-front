@@ -44,7 +44,7 @@ export default function CommentForm({
             .post(`/api/posts/${postId}/comments`, requestData)
             .then(() => {
                 axios.get(`/api/posts/${postId}/comments`).then((response) => {
-                    commentUpdateFunc(response.data.comments.reverse());
+                    commentUpdateFunc(response.data.comments);
                 });
             })
             .catch((err) => {

@@ -10,3 +10,5 @@ export const PostArticleWrapper = styled.div`
     width: clamp(0px, 720px, 100%);
     padding: 10px;
 `;
+
+export const CommentSection = styled.div``;

@@ -26,10 +26,12 @@ export default function Comment(props) {
                     {props.content}
                 </CommentContent>
                 <CommentDetail>
-                    <span className="light">1년 전</span>
+                    <span className="light">
+                        {props.regDate.substring(0, 10)}
+                    </span>
                     {props.layer === 0 && (
                         <span className="bold" onClick={ActiveReply}>
-                            ㆍ답글달기
+                            {activeReply ? "ㆍ숨기기" : "ㆍ답글달기"}
                         </span>
                     )}
                     {activeReply && (

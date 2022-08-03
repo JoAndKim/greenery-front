@@ -40,14 +40,14 @@ export default function PostCard({
                                 />
                                 <span>{likes}</span>
                             </PostInfo>
-                            <PostInfo>
+                            {/* <PostInfo>
                                 <img
                                     src="/icon/eye.svg"
                                     alt="조회수"
                                     width={15}
                                 />
                                 <span>{hits}</span>
-                            </PostInfo>
+                            </PostInfo> */}
                         </PostInfoWrapper>
                     </ContentBox>
                 </a>

@@ -7,7 +7,14 @@ export default function SideBar(props) {
             <IconBox>
                 <button onClick={props.likeHandler}>
                     <Icon width={20.62}>
-                        <img src="/icon/thumbs-up.svg" alt="thumbs-up" />
+                        <img
+                            src={
+                                props.isPostLiked
+                                    ? "/icon/thumbs-up-solid.svg"
+                                    : "/icon/thumbs-up.svg"
+                            }
+                            alt="thumbs-up"
+                        />
                     </Icon>
                 </button>
 

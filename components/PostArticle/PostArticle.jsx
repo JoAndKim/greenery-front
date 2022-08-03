@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
     ArticleWrapper,
     ArticleTitle,
@@ -19,6 +20,7 @@ export default function PostArticle({
     username,
     userId
 }) {
+    console.log(likeStatus);
     return (
         <ArticleWrapper>
             <ArticleTitle>{title}</ArticleTitle>
@@ -29,7 +31,7 @@ export default function PostArticle({
                     <div>
                         <p>{regDate}</p>
                         <Like>
-                            <img src="/icon/thumbs-up.svg" alt="좋아요 수" />
+                            <img src={"/icon/thumbs-up.svg"} alt="좋아요 수" />
                             <div>{likes}</div>
                         </Like>
                     </div>

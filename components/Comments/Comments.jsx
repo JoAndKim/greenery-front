@@ -14,7 +14,7 @@ export default function Comments({ postId }) {
         const postId = await router.query.id;
         const response = await axios.get(`/api/posts/${postId}/comments`);
         const { data } = response;
-        setCommentData(data.comments.reverse());
+        setCommentData(data.comments);
     }, [router.isReady]);
 
     return (

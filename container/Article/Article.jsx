@@ -7,12 +7,12 @@ import {
     Header,
     SideBar,
     PostArticle,
-    CommentForm,
     Comments,
     Footer
 } from "../../components/index";
 
 export default function Article() {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [postData, setPostData] = useState({});
     const router = useRouter();
     const commentRef = useRef();
@@ -28,14 +28,23 @@ export default function Article() {
         const response = await axios.get(`/api/posts/${postId}`);
         const { data } = response;
         setPostData(data);
-        const store = localStorage.getItem("userInfo");
-        setAxiosDefaultAccessToken(JSON.parse(store));
+        if (localStorage.getItem("userInfo")) {
+            const store = localStorage.getItem("userInfo");
+            setAxiosDefaultAccessToken(JSON.parse(store));
+            setIsLoggedIn(true);
+        }
     }, [router.isReady]);
 
     const handleLikeClick = () => {
-        axios.post(`/api/posts/${id}/likes`).then(() => {
-            setIsPostLiked(true);
-        });
+        if (isPostLiked) {
+            axios.delete(`/api/posts/${id}/likes`).then(() => {
+                setIsPostLiked(false);
+            });
+        } else {
+            axios.post(`/api/posts/${id}/likes`).then(() => {
+                setIsPostLiked(true);
+            });
+        }
     };
 
     const handleCommentClick = () => {
@@ -43,6 +52,9 @@ export default function Article() {
             behavior: "smooth",
             block: "start"
         });
+        if (!isLoggedIn) {
+            alert("댓글을 달기 위해서는 로그인을 해야 합니다.");
+        }
     };
 
     const handleTrashClick = () => {
@@ -72,7 +84,6 @@ export default function Article() {
     return (
         <Main>
             <Header />
-
             <PostArticleWrapper>
                 {postData.user && (
                     <PostArticle
@@ -96,7 +107,6 @@ export default function Article() {
                 />
                 <CommentSection>
                     <h2 ref={commentRef}>댓글</h2>
-                    <CommentForm />
                     <Comments postId={id} />
                 </CommentSection>
             </PostArticleWrapper>
