@@ -51,7 +51,7 @@ export const ContentBox = styled.div`
         object-fit: cover;
     }
 
-    & > p {
+    & > div {
         display: inline-block;
         width: 70%;
         margin: 0;
@@ -67,7 +67,7 @@ export const ContentBox = styled.div`
         align-items: center;
         justify-content: center;
 
-        & P {
+        & p {
             font-size: 20px;
             width: 90%;
             border-left: none;

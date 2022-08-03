@@ -7,8 +7,8 @@ import {
 export default function TodaysPlant({ imgUrl, content, postId }) {
     const translateContent = (content) => {
         const newContent = content.split("**");
-        return newContent.map((text, idx) => {
-            return <div>{text}</div>;
+        return newContent.map((text, i) => {
+            return <p key={i}>{text}</p>;
         });
     };
     return (
@@ -16,7 +16,7 @@ export default function TodaysPlant({ imgUrl, content, postId }) {
             <h3>오늘의 초록이</h3>
             <ContentBox>
                 <img src={imgUrl} alt="인기 식물 사진" />
-                <p>
+                <div>
                     {translateContent(content)}
                     <TodaysLink href={`/article/${postId}`}>
                         <a>
@@ -24,7 +24,7 @@ export default function TodaysPlant({ imgUrl, content, postId }) {
                         </a>
                     </TodaysLink>
                     를 눌러주세요
-                </p>
+                </div>
             </ContentBox>
         </TodaysPlantSection>
     );
