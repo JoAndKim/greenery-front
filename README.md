@@ -13,9 +13,9 @@
 
 ## :link: 프로젝트 링크
 
-[서비스 링크](#)
+[서비스 링크](https://greeneryishere.netlify.app/)
 
-[시연 영상](#)
+[시연 영상](https://east-ferry-1ce.notion.site/38dd737a6f55415b885f52b4ed822984)
 
 <br />
 
