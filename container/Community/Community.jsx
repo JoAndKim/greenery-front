@@ -6,7 +6,7 @@ import {
     ContentsWrapper,
     PostButtonWrapper,
     SearchInput,
-    WideContainer,
+    WideContainer
 } from "./Community.style";
 import { useState, useEffect } from "react";
 
@@ -23,11 +23,6 @@ export default function Community() {
             <Main>
                 <WideContainer>
                     <SearchInput>
-                        <input
-                            // ref={searchRef}
-                            type="text"
-                            placeholder="검색어를 입력하세요"
-                        />
                         <img src="/icon/search.svg" alt="" />
                     </SearchInput>
                     <ContentsWrapper>
@@ -39,7 +34,7 @@ export default function Community() {
                                     title,
                                     user,
                                     likes,
-                                    hits,
+                                    hits
                                 }) => {
                                     return (
                                         <PostCard
