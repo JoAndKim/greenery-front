@@ -80,6 +80,11 @@ export const ContentBox = styled.div`
             width: 85%;
             margin: 0;
         }
+
+        & div {
+            width: 95%;
+            font-size: 15px;
+        }
     }
 `;
 

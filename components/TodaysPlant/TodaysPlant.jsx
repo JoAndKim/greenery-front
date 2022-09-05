@@ -8,7 +8,7 @@ export default function TodaysPlant({ imgUrl, content, postId }) {
     const translateContent = (content) => {
         const newContent = content.split("**");
         return newContent.map((text, i) => {
-            return <p key={i}>{text}</p>;
+            return <div key={i}>{text}</div>;
         });
     };
     return (
