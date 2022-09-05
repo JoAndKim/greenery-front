@@ -41,7 +41,7 @@ class MyDocument extends Document {
                         href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@200;600;700&family=Roboto:wght@300;500;700&display=swap"
                         rel="stylesheet"
                     />
-                    <link rel="shortcut icon" href="/favicon.svg" />
+                    <link rel="shortcut icon" href="/img/favicon.svg" />
 
                     <meta
                         property="og:title"
