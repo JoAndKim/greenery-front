@@ -1,5 +1,4 @@
 import styled from "styled-components";
-// import "font-awesome/css/font-awesome.min.css";
 
 export const Main = styled.main`
     width: 100%;
@@ -28,8 +27,8 @@ export const ContentsWrapper = styled.section`
     display: grid;
     grid-template-columns: 360px 360px 360px;
     grid-gap: 80px 28px;
-    margin: 40px auto 0 auto;
-    min-height: 90vh;
+    margin: 70px auto 0 auto;
+    min-height: 75vh;
 
     @media screen and (min-width: 432px) and (max-width: 1150px) {
         display: grid;
@@ -58,32 +57,5 @@ export const PostButtonWrapper = styled.div`
     @media screen and (max-width: 760px) {
         max-width: 60px;
         right: 10vw;
-    }
-`;
-
-export const SearchInput = styled.form`
-    position: relative;
-
-    & input {
-        box-sizing: border-box;
-        padding: 5px 5px 5px 40px;
-        width: 360px;
-        height: 46px;
-        border: 1px solid #e5e5e5;
-        border-radius: 5px;
-        outline: none;
-    }
-
-    & input::placeholder {
-        font-size: 16px;
-        font-weight: light;
-        font-family: FontAwesome;
-        color: rgba(118, 118, 118, 0.8);
-    }
-
-    & img {
-        position: absolute;
-        top: 13px;
-        left: 14px;
     }
 `;

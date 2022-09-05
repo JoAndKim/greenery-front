@@ -14,7 +14,7 @@ export default function Community() {
     const [posts, setPosts] = useState();
     useEffect(async () => {
         const response = await axios.get("/api/posts");
-        setPosts(response.data.posts);
+        setPosts(response.data.posts.reverse());
     }, []);
 
     return (
@@ -22,9 +22,6 @@ export default function Community() {
             <Header />
             <Main>
                 <WideContainer>
-                    <SearchInput>
-                        <img src="/icon/search.svg" alt="" />
-                    </SearchInput>
                     <ContentsWrapper>
                         {posts &&
                             posts.map(
