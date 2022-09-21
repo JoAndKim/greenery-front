@@ -262,10 +262,10 @@
   "resolved" "https://registry.npmjs.org/@types/scheduler/-/scheduler-0.16.2.tgz"
   "version" "0.16.2"
 
-"@types/styled-components@^5.1.24":
-  "integrity" "sha512-mz0fzq2nez+Lq5IuYammYwWgyLUE6OMAJTQL9D8hFLP4Pkh7gVYJii/VQWxq8/TK34g/OrkehXaFNdcEKcItug=="
-  "resolved" "https://registry.npmjs.org/@types/styled-components/-/styled-components-5.1.24.tgz"
-  "version" "5.1.24"
+"@types/styled-components@^5.1.26":
+  "integrity" "sha512-KuKJ9Z6xb93uJiIyxo/+ksS7yLjS1KzG6iv5i78dhVg/X3u5t1H7juRWqVmodIdz6wGVaIApo1u01kmFRdJHVw=="
+  "resolved" "https://registry.npmjs.org/@types/styled-components/-/styled-components-5.1.26.tgz"
+  "version" "5.1.26"
   dependencies:
     "@types/hoist-non-react-statics" "*"
     "@types/react" "*"
