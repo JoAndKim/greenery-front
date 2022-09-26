@@ -15,8 +15,6 @@ import CommentForm from "./CommentForm/CommentForm";
 import Survey from "./Survey/Survey";
 import StyledButton from "./StyledButton/StyledButton";
 
-import PlantCard from "./PlantCard/PlantCard";
-import PlantInfoModal from "./PlantInfoModal/PlantInfoModal";
 import PlantDetail from "./PlantDetail/PlantDetail";
 import PlantGrid from "./PlantGrid/PlantGrid";
 
@@ -37,8 +35,6 @@ export {
     CommentForm,
     Survey,
     StyledButton,
-    PlantCard,
-    PlantInfoModal,
     PlantDetail,
     PlantGrid,
     Layout,
