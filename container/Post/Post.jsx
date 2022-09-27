@@ -27,7 +27,12 @@ export default function Post() {
 
     useEffect(() => {
         const store = localStorage.getItem("userInfo");
-        setAxiosDefaultAccessToken(JSON.parse(store));
+        if (store) {
+            setAxiosDefaultAccessToken(JSON.parse(store));
+        } else {
+            alert("글쓰기 권한이 없습니다. 로그인 창으로 이동합니다.");
+            router.push("/signin");
+        }
         if (router.query.mode) {
             const postId = router.query.postId;
             axios.get(`/api/posts/${postId}`).then((response) => {
